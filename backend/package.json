@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js --exec  \"npm run lint && node\"",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js  --fix"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "morgan": "~1.9.0",
+    "mongodb": "^2.2.33",
+    "monk": "^6.0.5",
+    "pug": "2.0.0-beta11",
+    "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint": "^4.6.0",
+    "nodemon": "^1.11.0"
+  }
+}
