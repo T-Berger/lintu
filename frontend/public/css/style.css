@@ -1,0 +1,232 @@
+:root{
+    --colorTerminal-: black;
+    --colorborderTerminal-: grey;
+    --fontcolorTerminal-: green;
+    --laengeUsername-: 50px;
+    --laengeHeader-: 5vw;
+    --breiteNavbar-: 5vw;
+}
+body{
+    margin: 0;
+}
+header{
+    position: fixed;
+    height: var(--laengeHeader-);
+    width: 100%;
+    background-color: black;
+    left: 5vw;
+    top: 0;
+    border-bottom: 1px solid black;
+
+}
+#navbar {
+    background-color: black;
+    width: var(--breiteNavbar-);
+    position: fixed;
+    left: 0px;
+    top: 0;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow: auto;
+}
+#display {
+    margin-top: 5vw;
+    margin-left:5vw;
+    padding: 10px 50px;
+
+}
+#terminalInput {
+    background-color: var(--colorTerminal-);
+    color: var(--fontcolorTerminal-);
+    /*height: auto;*/
+    display: inline;
+    position: relative;
+    font-size: 14.3px;
+    font-family: Arial;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: normal;
+
+}
+#terminalInput label{
+    vertical-align: top;
+    overflow: auto;
+    width: var(--laengeUsername-);
+    position: absolute;
+
+}
+#input {
+
+    color: var(--fontcolorTerminal-);
+    background-color: var(--colorTerminal-);
+    align-self: baseline;
+    text-indent: var(--laengeUsername-);
+    border: none;
+    width: 100%;
+    max-width: 100%;
+    text-decoration: none;
+    padding: 0px;
+    outline: none;
+    font-size: 14.3px;
+    font-family: Arial;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: normal;
+}
+
+    /*   -webkit-appearance: none;
+
+   /*  position: relative;
+        left: auto;
+    */
+/*HEADERNAVBAR*/
+/*header > div {
+    position: fixed;
+
+    width: 100%;
+    height: var(--laengeHeader-);
+    background-color: black;
+    text-align: center;
+
+}
+#headerbar{
+    list-style-type: none;
+    overflow: hidden;
+    text-align: center;
+    margin: 0;
+    margin-left:36%;
+    padding: 2px;
+    font-size: 15pt;
+}
+#headerbar li {
+    float: left;
+}*/
+
+/*Startmenü*/
+#startmenü-icon {
+    text-align: center;
+    vertical-align: middle;
+    height: var(--laengeHeader-);
+    width: var(--breiteNavbar-);
+    border-left: none;
+    font-size: 3em;
+}
+#startmenü-icon:focus {outline:0;}
+    /*Navbar*/
+#ul-navbar {
+
+    padding-left: 0px;
+    list-style-type: none;
+    border-right: 2px solid black;
+}
+    /*LIST ITEMS-NAVBAR*/
+.list-item {
+    background: #000;
+    color: #575757;
+    text-align: center;
+/*    height: 2.5em;
+    width: 4em;*/
+    height: 5vw;
+    width: auto;
+    vertical-align: middle;
+    line-height: 2.5em;
+    border-bottom: 1px solid #060606;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    border-bottom: 2px solid grey;
+    -webkit-transition: all .25s linear;
+    transition: all .25s linear;
+    font-size: 20pt;
+}
+.list-item:hover {
+    background: #ff6e42;
+    color: #fffcfb;
+}
+.list-item:hover:before, .list-item:hover:after {
+    -webkit-transition: all .25s linear;
+    transition: all .25s linear;
+}
+.list-item:hover:before {
+    background: #b65234;
+}
+.list-item:hover:after {
+    background: #b65234;
+}
+.list-item:before, .list-item:after {
+    content: '';
+    position: absolute;
+  }
+.list-item:after {
+    background: #181818;
+}
+.list-item:before {
+    background: #121212;
+}
+.list-item > img{
+    width: calc(var(--breiteNavbar-) - 10px);
+    height: auto;
+    color: white;
+    filter: invert(35%);
+    border-top: 2px double grey;
+}
+#arrowcrosslist{
+    position: fixed;
+    bottom: 0px;
+    width: var(--breiteNavbar-);
+}
+
+
+
+/*TODO*/
+/*BUTTONACTIVE change to startmenü*/
+#startmenü-icon{
+  background-color: buttonface;
+  color: black;
+
+
+}
+#startmenü-icon:active{
+    color:white;
+    background-color: #303030;
+    outline: none;
+}
+button.selected{
+    color:white;
+    background-color: #303030;
+}
+
+
+
+#kurs{
+    position: absolute;
+
+}
+/*STARTMENÜ*/
+#startmenü-display{
+    position: relative;
+    color:white;
+
+}
+#powerbutton{
+    position: fixed;
+    bottom: 0px;
+    border-top: 2px double grey;
+    text-align: center;
+    /*    height: 2.5em;
+        width: 4em;*/
+    height: 5vw;
+    width: var(--breiteNavbar-);
+    vertical-align: middle;
+}
+
+
