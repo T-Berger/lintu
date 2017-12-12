@@ -1,0 +1,155 @@
+<template dark class="pa-0">
+  <!--Navbar-->
+  <v-navigation-drawer permanent dark id="navbar">
+    <!--Icon Startmenü-->
+    <button id="startmenü-icon">
+      <i class="fab fa-linux"></i>
+    </button>
+
+
+    <!--Navbar-icons-->
+    <ul id="ul-navbar">
+      <li>
+        <a class="list-item" href="">
+          <i class="fas fa-chevron-circle-right"></i>
+        </a>
+      </li>
+      <li>
+        <a class="list-item" href="">
+          <i class="fas fa-cogs"></i>
+        </a>
+      </li>
+      <li>
+        <a class="list-item" href="">
+          <i class="fas fa-info-circle"></i>
+        </a>
+      </li>
+      <li>
+        <a id="arrowcrosslist" class="list-item" href="#">
+          <img src="../assets/Arrow_Cross.svg" alt="||-||">
+        </a>
+      </li>
+
+
+      <li id="powerbutton">
+        <a class="list-item" href="">
+          <i class="fas fa-power-off"></i>
+        </a>
+      </li>
+    </ul>
+
+
+  </v-navigation-drawer>
+
+</template>
+<script>
+    export default {
+      name: 'nav-bar'
+    }
+</script>
+
+<style scoped>
+  .theme--dark,.application .theme--dark.navigation-drawer .list,
+  .application .theme--dark.navigation-drawer .subheader,
+  .application .theme--dark.navigation-drawer a:not(.list__tile--active) {
+    color: #575757 !important;
+  }
+  /*Startmenü*/
+  #startmenü-icon {
+    text-align: center;
+    vertical-align: middle;
+    height: var(--laengeHeader-);
+    width: var(--breiteNavbar-);
+    border-left: none;
+    font-size: 3em;
+  }
+  #startmenü-icon:focus {outline:0;}
+  /*LIST ITEMS-NAVBAR*/
+  .list-item {
+    background: #000;
+    color: #575757;
+    text-align: center;
+    height: 5vw;
+    width: auto;
+    vertical-align: middle;
+    line-height: 2.5em;
+    border-bottom: 1px solid #060606;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    border-bottom: 2px solid grey;
+    -webkit-transition: all .25s linear;
+    transition: all .25s linear;
+    font-size: 20pt;
+  }
+  .list-item:hover {
+    background: #ff6e42;
+    color: #fffcfb;
+  }
+  .list-item:hover:before, .list-item:hover:after {
+    -webkit-transition: all .25s linear;
+    transition: all .25s linear;
+  }
+  .list-item:hover:before {
+    background: #b65234;
+  }
+  .list-item:hover:after {
+    background: #b65234;
+  }
+  .list-item:before, .list-item:after {
+    content: '';
+    position: absolute;
+  }
+  .list-item:after {
+    background: #181818;
+  }
+  .list-item:before {
+    background: #121212;
+  }
+  .list-item > img{
+    width: calc(var(--breiteNavbar-) - 10px);
+    height: auto;
+    color: white;
+    filter: invert(35%);
+    border-top: 2px double grey;
+  }
+  #arrowcrosslist{
+    position: fixed;
+    bottom: 0px;
+    width: var(--breiteNavbar-);
+  }
+  #startmenü-icon:active{
+    color:white;
+    background-color: #303030;
+  }
+  button{
+     background-color: buttonface;
+     color: black;
+
+
+   }
+  button.selected{
+    color:white !important;
+    background-color: #303030 !important;
+  }
+
+  #startmenü-icon:active{
+    color:white;
+    background-color: #303030;
+    outline: none;
+  }
+
+
+  #navbar {
+    background-color: black;
+    width: var(--breiteNavbar-);
+    position: fixed;
+    left: 0px;
+    top: 0;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow: auto;
+  }
+
+</style>

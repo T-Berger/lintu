@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <v-app>
-      <page-header />
+
+
 
       <main>
+        <nav-bar />
+        <page-header />
         <v-container fluid>
           <router-view></router-view>
         </v-container>
@@ -14,10 +17,12 @@
 
 <script>
   import PageHeader from '@/components/Header.vue'
+  import NavBar from './components/NavBar'
 
   export default {
     name: 'app',
     components: {
+      NavBar,
       PageHeader
     }
   }

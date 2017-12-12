@@ -129,81 +129,13 @@ header{
     border-right: 2px solid black;
 }
     /*LIST ITEMS-NAVBAR*/
-.list-item {
-    background: #000;
-    color: #575757;
-    text-align: center;
-/*    height: 2.5em;
-    width: 4em;*/
-    height: 5vw;
-    width: auto;
-    vertical-align: middle;
-    line-height: 2.5em;
-    border-bottom: 1px solid #060606;
-    position: relative;
-    display: block;
-    text-decoration: none;
-    border-bottom: 2px solid grey;
-    -webkit-transition: all .25s linear;
-    transition: all .25s linear;
-    font-size: 20pt;
-}
-.list-item:hover {
-    background: #ff6e42;
-    color: #fffcfb;
-}
-.list-item:hover:before, .list-item:hover:after {
-    -webkit-transition: all .25s linear;
-    transition: all .25s linear;
-}
-.list-item:hover:before {
-    background: #b65234;
-}
-.list-item:hover:after {
-    background: #b65234;
-}
-.list-item:before, .list-item:after {
-    content: '';
-    position: absolute;
-  }
-.list-item:after {
-    background: #181818;
-}
-.list-item:before {
-    background: #121212;
-}
-.list-item > img{
-    width: calc(var(--breiteNavbar-) - 10px);
-    height: auto;
-    color: white;
-    filter: invert(35%);
-    border-top: 2px double grey;
-}
-#arrowcrosslist{
-    position: fixed;
-    bottom: 0px;
-    width: var(--breiteNavbar-);
-}
+
+
 
 
 
 /*TODO*/
 /*BUTTONACTIVE change to startmenü*/
-#startmenü-icon{
-  background-color: buttonface;
-  color: black;
-
-
-}
-#startmenü-icon:active{
-    color:white;
-    background-color: #303030;
-    outline: none;
-}
-button.selected{
-    color:white;
-    background-color: #303030;
-}
 
 
 
