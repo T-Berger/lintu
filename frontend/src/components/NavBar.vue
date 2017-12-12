@@ -142,7 +142,7 @@
 
   #navbar {
     background-color: black;
-    width: var(--breiteNavbar-);
+    width: var(--breiteNavbar-) !important;
     position: fixed;
     left: 0px;
     top: 0;

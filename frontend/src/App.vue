@@ -7,7 +7,7 @@
       <main>
         <nav-bar />
         <page-header />
-        <v-container fluid>
+        <v-container>
           <router-view></router-view>
         </v-container>
       </main>
@@ -18,10 +18,12 @@
 <script>
   import PageHeader from '@/components/Header.vue'
   import NavBar from './components/NavBar'
+  import Aufgaben from './components/Aufgaben'
 
   export default {
     name: 'app',
     components: {
+      Aufgaben,
       NavBar,
       PageHeader
     }
