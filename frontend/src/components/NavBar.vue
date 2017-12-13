@@ -10,6 +10,14 @@
     <!--Navbar-icons-->
     <ul id="ul-navbar">
       <li>
+        <v-tooltip right v-model="item.show">
+          <a class="list-item" href="" slot="activator">
+            <v-icon dark>{{item.icon}}</v-icon>
+          </a>
+          <span>{{item.tooltip}}</span>
+        </v-tooltip>
+      </li>
+      <li>
         <a class="list-item" href="">
           <i class="fas fa-chevron-circle-right"></i>
         </a>
@@ -44,7 +52,15 @@
 </template>
 <script>
     export default {
-      name: 'nav-bar'
+      name: 'nav-bar',
+      data () {
+        return {
+          items: [
+            {icon: 'fa-chevron-circle-right', tooltip: 'dashboard'},
+            {icon: 'fa-cogs', tooltip: 'question_answer'}
+          ]
+        }
+      }
     }
 </script>
 
