@@ -6,7 +6,8 @@
 
       <main>
         <nav-bar />
-        <page-header />
+        <page-header :task="task"/>
+        <aufgaben :task="task"/>
         <v-container>
           <router-view></router-view>
         </v-container>
@@ -19,13 +20,21 @@
   import PageHeader from '@/components/Header.vue'
   import NavBar from './components/NavBar'
   import Aufgaben from './components/Aufgaben'
-
+  import TasksService from '@/services/TasksService'
   export default {
     name: 'app',
     components: {
       Aufgaben,
       NavBar,
       PageHeader
+    },
+    data () {
+      return {
+        task: 'Hallo'
+      }
+    },
+    async mounted () {
+      this.task = (await TasksService.index()).data
     }
   }
 </script>

@@ -25,12 +25,12 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/id',
+      path: '/',
       name: 'ContentPage',
       component: ContentPage
     },
     {
-      path: '/',
+      path: '/id',
       name: 'idiot',
       component: test
     }
