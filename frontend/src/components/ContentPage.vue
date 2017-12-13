@@ -34,24 +34,11 @@
 </template>
 
 <script>
-
   export default {
     name: 'content-page'
   }
 </script>
 
 <style scoped>
-  #kurs{
-    position: relative;
-    width: 800px;
-    height: 500px;
-  }
-  #terminal{
-    position: fixed;
-    top:0;
-    right: 0;
-    width: 200px;
-    height: 100%;
-    outline: 1px solid #ccc;
-  }
+
 </style>

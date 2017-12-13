@@ -8,9 +8,9 @@
 
 
     <!--Navbar-icons-->
-    <ul id="ul-navbar">
+    <ul id="ul-navbar" v-for="item in items" :key="item.icon">
       <li>
-        <v-tooltip right v-model="item.show">
+        <v-tooltip right>
           <a class="list-item" href="" slot="activator">
             <v-icon dark>{{item.icon}}</v-icon>
           </a>
@@ -59,6 +59,11 @@
             {icon: 'fa-chevron-circle-right', tooltip: 'dashboard'},
             {icon: 'fa-cogs', tooltip: 'question_answer'}
           ]
+        }
+      },
+      methods: {
+        switchStartButton: function () {
+          this.$StartMenuActive.commit('switchStartMenuButton')
         }
       }
     }
