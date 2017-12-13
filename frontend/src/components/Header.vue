@@ -7,8 +7,7 @@
         </v-tabs-item>
       <v-spacer></v-spacer>
         <v-tabs-item centered class="v-tabs-item">
-           <span class="dimgrey--text">Hallo ich bin</span>
-          <v-icon large dark>mdi-arrow-right-bold</v-icon>
+           <span class="dimgrey--text">{{ task[0].aufgabentitel }}</span>
         </v-tabs-item>
       <v-spacer></v-spacer>
         <v-tabs-item class="v-tabs-item">
@@ -19,7 +18,9 @@
 </template>
 
 <script>
-
+  export default {
+    props: ['task']
+  }
 </script>
 
 <style scoped>
