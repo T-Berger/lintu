@@ -8,11 +8,13 @@
         <nav-bar />
         <page-header :task="task"/>
         <aufgaben :task="task"/>
-        <v-container>
-          <span>{{ startMenuActive }}</span>
-          <start-menu  v-show="this.$store.state.startMenuButton == true"/>
+
+        <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü"/>
+
+          <!--<span>{{ startMenuActive }}</span>-->
+
           <router-view></router-view>
-        </v-container>
+
       </main>
     </v-app>
   </div>
@@ -57,7 +59,15 @@
     color: #2c3e50;
     margin-top: 60px;
   }
-
+  #startmenü{
+    position: absolute;
+    left: var(--breiteNavbar-);
+    height: 100%;
+    color:white;
+    background: rgba(33, 33, 33, 0.6) !important;
+    width:calc(100% - var(--breiteNavbar-)) !important;
+    z-index: 1;
+  }
   .danger-alert {
     color: red;
   }

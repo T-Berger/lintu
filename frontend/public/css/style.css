@@ -34,7 +34,7 @@ header{
     margin-top: 5vw;
     margin-left:5vw;
     padding: 10px 50px;
-
+    /*z-index: -1;*/
 }
 #terminalInput {
     background-color: var(--colorTerminal-);
@@ -147,7 +147,6 @@ header{
 #startmenü-display{
     position: relative;
     color:white;
-
 }
 #powerbutton{
     position: fixed;
