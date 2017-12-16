@@ -9,6 +9,8 @@
         <page-header :task="task"/>
         <aufgaben :task="task"/>
         <v-container>
+          <span>{{ startMenuActive }}</span>
+          <start-menu  v-show="this.$store.state.startMenuButton == true"/>
           <router-view></router-view>
         </v-container>
       </main>
@@ -21,12 +23,14 @@
   import NavBar from './components/NavBar'
   import Aufgaben from './components/Aufgaben'
   import TasksService from '@/services/TasksService'
+  import StartMenu from '@/components/StartMenu'
   export default {
     name: 'app',
     components: {
       Aufgaben,
       NavBar,
-      PageHeader
+      PageHeader,
+      StartMenu
     },
     data () {
       return {
@@ -35,6 +39,11 @@
     },
     async mounted () {
       this.task = (await TasksService.index()).data
+    },
+    computed: {
+      startMenuActive () {
+        return this.$store.state.startMenuButton
+      }
     }
   }
 </script>

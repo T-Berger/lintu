@@ -2,7 +2,7 @@
   <!--Navbar-->
   <v-navigation-drawer permanent dark id="navbar">
     <!--Icon Startmenü-->
-    <button id="startmenü-icon">
+    <button id="startmenü-icon" v-on:click="switchStartButton()">
       <i class="fab fa-linux"></i>
     </button>
 
@@ -63,7 +63,7 @@
       },
       methods: {
         switchStartButton: function () {
-          this.$StartMenuActive.commit('switchStartMenuButton')
+          this.$store.commit('switchStartMenuButton')
         }
       }
     }

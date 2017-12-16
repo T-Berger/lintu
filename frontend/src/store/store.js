@@ -3,13 +3,18 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export const startMenuState = new Vuex.Store({
+export const store = new Vuex.Store({
+  strict: true,
   state: {
     startMenuButton: false
   },
+  getters: {
+  },
   mutations: {
     switchStartMenuButton: state => {
-      state.startMenuActive = !state.startMenuActive
+      state.startMenuButton = !state.startMenuButton
     }
+  },
+  actions: {
   }
 })
