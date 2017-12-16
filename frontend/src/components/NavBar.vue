@@ -8,36 +8,47 @@
 
 
     <!--Navbar-icons-->
-    <ul id="ul-navbar" v-for="item in items" :key="item.icon">
+    <ul id="ul-navbar">
+      <div v-for="(item,index) in items" :key="item.icon">
       <li>
-        <v-tooltip right>
+        <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
+          <a class="list-item" href="" slot="activator">
+            <v-icon dark>{{item.icon}}</v-icon>
+          </a>
+          <span>{{item.tooltip}}</span>
+        </v-tooltip>
+        <v-tooltip right v-else="" v-model="form._id[index]">
           <a class="list-item" href="" slot="activator">
             <v-icon dark>{{item.icon}}</v-icon>
           </a>
           <span>{{item.tooltip}}</span>
         </v-tooltip>
       </li>
+      </div>
       <li>
-        <a class="list-item" href="">
-          <i class="fas fa-chevron-circle-right"></i>
-        </a>
-      </li>
+        <!--<v-tooltip right v-model="toogletooltip">-->
+          <!--<button class="list-button" v-on:click="toogle()" slot="activator">-->
+            <!--<v-icon dark>fa-info-circle</v-icon>-->
+          <!--</button>-->
+          <!--<span>Toogle Tooltip</span>-->
+        <!--</v-tooltip>-->
+      <!--</li>-->
+
       <li>
-        <a class="list-item" href="">
-          <i class="fas fa-cogs"></i>
-        </a>
+        <button class="list-button" v-on:click="toogle()">
+          <v-icon dark>fa-info-circle</v-icon>
+        </button>
       </li>
-      <li>
-        <a class="list-item" href="">
-          <i class="fas fa-info-circle"></i>
-        </a>
-      </li>
+
       <li>
         <a id="arrowcrosslist" class="list-item" href="#">
           <img src="../assets/Arrow_Cross.svg" alt="||-||">
         </a>
       </li>
 
+      <li>
+        {{toogletooltip}}
+      </li>
 
       <li id="powerbutton">
         <a class="list-item" href="">
@@ -57,13 +68,24 @@
         return {
           items: [
             {icon: 'fa-chevron-circle-right', tooltip: 'dashboard'},
-            {icon: 'fa-cogs', tooltip: 'question_answer'}
-          ]
+            {icon: 'fa-cogs', tooltip: 'question_answer'},
+            {icon: 'fa-info-circle', tooltip: 'question_answer'}
+          ],
+          form: {
+            _id: []
+          },
+          toogletooltip: false
         }
       },
       methods: {
         switchStartButton: function () {
           this.$store.commit('switchStartMenuButton')
+        },
+        toogle: function (event) {
+          this.toogletooltip = !this.toogletooltip
+          if (this.toogletooltip === false) {
+            this.$forceUpdate()
+          }
         }
       }
     }
@@ -103,28 +125,45 @@
     transition: all .25s linear;
     font-size: 20pt;
   }
-  .list-item:hover {
+  .list-button {
+    background: #000;
+    color: #575757;
+    text-align: center;
+    height: 5vw;
+    width: var(--breiteNavbar-);
+    vertical-align: middle;
+    line-height: 2.5em;
+    border-bottom: 1px solid #060606;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    border-bottom: 2px solid grey;
+    -webkit-transition: all .25s linear;
+    transition: all .25s linear;
+    font-size: 20pt;
+  }
+  .list-item:hover, .list-button:hover {
     background: #ff6e42;
     color: #fffcfb;
   }
-  .list-item:hover:before, .list-item:hover:after {
+  .list-item:hover:before, .list-item:hover:after, .list-button:before, .list-button:hover:after {
     -webkit-transition: all .25s linear;
     transition: all .25s linear;
   }
-  .list-item:hover:before {
+  .list-item:hover:before,.list-button:before {
     background: #b65234;
   }
-  .list-item:hover:after {
+  .list-item:hover:after, .list-button:after {
     background: #b65234;
   }
   .list-item:before, .list-item:after {
     content: '';
     position: absolute;
   }
-  .list-item:after {
+  .list-item:after, .list-button:after {
     background: #181818;
   }
-  .list-item:before {
+  .list-item:before, .list-button:after {
     background: #121212;
   }
   .list-item > img{
