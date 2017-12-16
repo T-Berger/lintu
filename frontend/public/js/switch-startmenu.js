@@ -14,27 +14,27 @@ $(document).ready(function () {
   })
   function startmenüload () {
         // opacity Kurs
-    $('#kurs').css('opacity', '0.4')
-    $('#kurs').css('z-index', '-1')
-    $('#display').css('background-color', 'rgba(33, 33, 33, 0.8)')
-        // hide
+    // $('#kurs').css('opacity', '0.4')
+    // $('#kurs').css('z-index', '-1')
+    // $('#display').css('background-color', 'rgba(33, 33, 33, 0.8)')
+    //     // hide
     $('#headerbar').hide()
     $('.list-item > img').hide()
 
         // show
-    $('#startmenü-display').show()
+    // $('#startmenü-display').show()
     $('#powerbutton').show()
   }
   function startmenudelete () {
         // opacity Kurs
-    $('#kurs').css('opacity', '1')
-    $('#kurs').css('z-index', '0')
-    $('#display').css('background-color', 'white')
+    // $('#kurs').css('opacity', '1')
+    // $('#kurs').css('z-index', '0')
+    // $('#display').css('background-color', 'white')
         // show
     $('#headerbar').show()
     $('.list-item > img').show()
         // hide
-    $('#startmenü-display').hide()
+    // $('#startmenü-display').hide()
     $('#powerbutton').hide()
   }
  // Kursansicht ändern
