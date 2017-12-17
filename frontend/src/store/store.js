@@ -13,6 +13,9 @@ export const store = new Vuex.Store({
   mutations: {
     switchStartMenuButton: state => {
       state.startMenuButton = !state.startMenuButton
+    },
+    switchStartMenuButtonOnTrue: state => {
+      state.startMenuButton = true
     }
   },
   actions: {

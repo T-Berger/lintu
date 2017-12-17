@@ -12,6 +12,23 @@ $(document).ready(function () {
       startmenüload()
     }
   })
+  // function selectedStartMenüIcon () {
+  //   if ($('#startmenü-icon').hasClass('selected')) {
+  //     $('#startmenü-icon').removeClass('selected')
+  //     // STARTMENÜ entfernen
+  //     startmenudelete()
+  //   } else {
+  //     $(this).addClass('selected')
+  //     // STARTMENÜ LADEN
+  //     startmenüload()
+  //   }
+  // }
+  // function selectedStartMenüIconOnlyOn () {
+  //     $('#startmenü-icon').addClass('selected');
+  //     // STARTMENÜ LADEN
+  //     startmenüload()
+  // }
+
   function startmenüload () {
         // opacity Kurs
     // $('#kurs').css('opacity', '0.4')
@@ -52,3 +69,10 @@ $(document).ready(function () {
     }
   })
 })
+
+// function jumpStartMenu(h){
+//   selectedStartMenuIconOnlyOn();
+//   var url = location.href;               //Save down the URL without hash.
+//   location.href = "#"+h;                 //Go to the target element.
+//   history.replaceState(null,null,url);   //Don't like hashes. Changing it back.
+// export {jumpStartMenu}

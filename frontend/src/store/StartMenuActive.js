@@ -10,6 +10,9 @@ export const startMenuState = new Vuex.Store({
   mutations: {
     switchStartMenuButton: state => {
       state.startMenuActive = !state.startMenuActive
+    },
+    switchStartMenuButtonOnTrue: state => {
+      state.startMenuActive = true
     }
   }
 })

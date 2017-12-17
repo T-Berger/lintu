@@ -12,13 +12,13 @@
       <div v-for="(item,index) in items" :key="item.icon">
       <li>
         <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
-          <a class="list-item" href="" slot="activator">
+          <a class="list-item" href="#profil" slot="activator">
             <v-icon dark>{{item.icon}}</v-icon>
           </a>
           <span>{{item.tooltip}}</span>
         </v-tooltip>
         <v-tooltip right v-else="" v-model="form._id[index]">
-          <a class="list-item" href="" slot="activator">
+          <a class="list-item" v-on:click="jumpstartMenu('profil')"  slot="activator">
             <v-icon dark>{{item.icon}}</v-icon>
           </a>
           <span>{{item.tooltip}}</span>
@@ -86,6 +86,21 @@
           if (this.toogletooltip === false) {
             this.$forceUpdate()
           }
+        },
+        selectedStartMenuIconOnlyOn: function () {
+          $('#startmenü-icon').addClass('selected')
+          // STARTMENÜ LADEN
+          $('#headerbar').hide()
+          $('.list-item > img').hide()
+          // show
+          $('#powerbutton').show()
+        },
+        jumpstartMenu: function (h) {
+          this.$store.commit('switchStartMenuButtonOnTrue')
+          this.selectedStartMenuIconOnlyOn()
+          var url = location.href               // Save down the URL without hash.
+          location.href = '#' + h                 // Go to the target element.
+          history.replaceState(null, null, url)   // Don't like hashes. Changing it back.
         }
       }
     }
