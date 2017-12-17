@@ -14,7 +14,7 @@
           <!--<span>{{ startMenuActive }}</span>-->
 
           <router-view></router-view>
-
+        <button  v-shortkey="['f5']" @shortkey="preventF5 ()"></button>
       </main>
     </v-app>
   </div>
@@ -45,6 +45,12 @@
     computed: {
       startMenuActive () {
         return this.$store.state.startMenuButton
+      }
+    },
+    methods: {
+      preventF5 () {
+        console.log('Prevented F5')
+        this.$forceUpdate()
       }
     }
   }

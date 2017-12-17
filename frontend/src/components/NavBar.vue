@@ -2,7 +2,7 @@
   <!--Navbar-->
   <v-navigation-drawer permanent dark id="navbar">
     <!--Icon Startmenü-->
-    <button id="startmenü-icon" v-on:click="switchStartButton()">
+    <button id="startmenü-icon" v-on:click="switchStartButton()" v-shortkey="['meta']" @shortkey="switchStartButton()">
       <i class="fab fa-linux"></i>
     </button>
 
@@ -56,6 +56,7 @@
         </a>
       </li>
     </ul>
+
 
 
   </v-navigation-drawer>
