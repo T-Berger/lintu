@@ -12,16 +12,30 @@
               <v-icon x-large v-bind:style="{ color: colorIcon(card.difficulty)}">
                 mdi-linux
               </v-icon>
+              <v-icon color="yellow accent-4" class="favIcon">mdi-star</v-icon>
             </v-btn>
             <v-layout v-show="card.visible" v-model="form.parent_id[index]">
-              <v-card-title primary-title>
+              <v-card-title primary-title class="mb-4 pb-4">
                 <div>
                   <h3 class="headline mb-0">{{ card.name + " " +  'name_id' + index  + card.id  }}</h3>
                   <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
                 </div>
               </v-card-title>
-              <v-card-actions>
-                <v-btn flat color="orange">Load</v-btn>
+              <v-card-actions dark>
+                <v-btn-toggle dark id="buttonbarcard">
+                  <v-btn ><v-icon>mdi-star</v-icon></v-btn>
+                  <v-spacer></v-spacer>
+                  <!--<v-btn flat color="white lighten 1" outline>Load</v-btn>-->
+                  <v-btn id="loadTask"
+                    color="success"
+                    :loading="loading2"
+                    @click.native="loader = 'loading2'"
+                    :disabled="loading2"
+                  >
+                    Load task
+                    <span slot="loader">Loading... <v-progress-circular size="18" indeterminate color="white"></v-progress-circular></span>
+                  </v-btn>
+                </v-btn-toggle>
               </v-card-actions>
             </v-layout>
           </v-card>
@@ -57,7 +71,9 @@
           },
           showlabel: false,
           show0: false,
-          show1: false
+          show1: false,
+          loader: null,
+          loading2: false
         }
       },
       methods: {
@@ -86,6 +102,16 @@
             return 'red'
           }
         }
+      },
+      watch: {
+        loader () {
+          const l = this.loader
+          this[l] = !this[l]
+
+          setTimeout(() => (this[l] = false), 3000)
+
+          this.loader = null
+        }
       }
       // },
       // computed: {
@@ -109,5 +135,27 @@
   bottom: 0px;
   right: 0px;
   margin-top: 150px;
+}
+#buttonbarcard{
+  position: absolute;
+  bottom: 0px;
+  left:0px;
+  /*right: 0px;*/
+  /*background: black;*/
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+#loadTask{
+  color: red;
+  opacity: 1;
+  width: 60%;
+}
+.favIcon{
+  position: absolute;
+  bottom:0px;
+  right: 18px;
+  /*outline-color: red;*/
+  /*outline-width: 2px;*/
 }
 </style>
