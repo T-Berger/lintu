@@ -12,7 +12,7 @@
       <div v-for="(item,index) in items" :key="item.icon">
       <li>
         <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
-          <a class="list-item" href="#profil" slot="activator">
+          <a class="list-item" v-on:click="jumpstartMenu('profil')"  slot="activator">
             <v-icon dark>{{item.icon}}</v-icon>
           </a>
           <span>{{item.tooltip}}</span>
@@ -98,9 +98,11 @@
         jumpstartMenu: function (h) {
           this.$store.commit('switchStartMenuButtonOnTrue')
           this.selectedStartMenuIconOnlyOn()
-          var url = location.href               // Save down the URL without hash.
-          location.href = '#' + h                 // Go to the target element.
-          history.replaceState(null, null, url)   // Don't like hashes. Changing it back.
+          var top = document.getElementById(h).offsetTop // Getting Y of target element
+          console.log(top)
+          console.log('Hallo_')
+          console.log(h)
+          window.scrollTo(0, 1000)                        // Go there directly or some transition
         }
       }
     }
