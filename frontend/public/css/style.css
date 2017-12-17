@@ -157,7 +157,24 @@ header{
         width: 4em;*/
     height: 5vw;
     width: var(--breiteNavbar-);
-    vertical-align: middle;
+    vertical-align: middle;}
+
+/*
+    SCROLLBAR
+*/
+body::-webkit-scrollbar {
+  width: 0.45em;
+  background-color: lightgrey;
 }
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: dimgrey;
+  outline: 1px solid slategrey;
+}
+
 
 
