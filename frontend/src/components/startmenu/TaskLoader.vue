@@ -12,7 +12,7 @@
               <v-icon x-large v-bind:style="{ color: colorIcon(card.difficulty)}">
                 mdi-linux
               </v-icon>
-              <v-icon color="yellow accent-4" class="favIcon">mdi-star</v-icon>
+              <v-icon v-if="form.fav_id[index] == true" v-model="form.fav_id[index]" color="yellow accent-4" class="favIcon">mdi-star</v-icon>
             </v-btn>
             <v-layout v-show="card.visible" v-model="form.parent_id[index]">
               <v-card-title primary-title class="mb-4 pb-4">
@@ -23,14 +23,17 @@
               </v-card-title>
               <v-card-actions dark>
                 <v-btn-toggle dark id="buttonbarcard">
-                  <v-btn ><v-icon>mdi-star</v-icon></v-btn>
+                  <v-btn @click.native="form.fav_id[index] = !form.fav_id[index]; $forceUpdate()">
+                    <v-icon v-if="form.fav_id[index] == true" color="amber accent-3">mdi-star</v-icon>
+                    <v-icon v-else="" >mdi-star</v-icon>
+                  </v-btn>
                   <v-spacer></v-spacer>
                   <!--<v-btn flat color="white lighten 1" outline>Load</v-btn>-->
                   <v-btn id="loadTask"
-                    color="success"
-                    :loading="loading2"
-                    @click.native="loader = 'loading2'"
-                    :disabled="loading2"
+                         color="success"
+                         :loading="loading2"
+                         @click.native="loader = 'loading2'"
+                         :disabled="loading2"
                   >
                     Load task
                     <span slot="loader">Loading... <v-progress-circular size="18" indeterminate color="white"></v-progress-circular></span>
@@ -56,106 +59,113 @@
 </template>
 
 <script>
-    export default {
-      name: 'task-loader',
-      data () {
-        return {
-          cards: [
-            {name: 'MacBook Air', id: 1, visible: false, difficulty: 10},
-            {name: 'MacBook Pro', id: 2, visible: false, difficulty: 40},
-            {name: 'Lenovo W530', id: 3, visible: false, difficulty: 80},
-            {name: 'Acer Aspire One', id: 4, visible: false, difficulty: 100}
-          ],
-          form: {
-            parent_id: []
-          },
-          showlabel: false,
-          show0: false,
-          show1: false,
-          loader: null,
-          loading2: false
-        }
-      },
-      methods: {
-        toggle (card) {
-          card.visible = !card.visible
+  export default {
+    name: 'task-loader',
+    data () {
+      return {
+        cards: [
+          {name: 'MacBook Air', id: 1, visible: false, difficulty: 10},
+          {name: 'MacBook Pro', id: 2, visible: false, difficulty: 40},
+          {name: 'Lenovo W530', id: 3, visible: false, difficulty: 80},
+          {name: 'Acer Aspire One', id: 4, visible: false, difficulty: 100}
+        ],
+        form: {
+          parent_id: [],
+          fav_id: ['', false]
         },
-        expandAllCards: function (event) {
-          console.log(this.cards)
-          for (var card in this.cards) {
-            console.log(this.cards[card].name)
-            this.cards[card].visible = true
-          }
-        },
-        collapseAllCards () {
-          for (var card in this.cards) {
-            this.cards[card].visible = false
-          }
-        },
-        colorIcon: function (difficulty) {
-          console.log(difficulty)
-          if (difficulty <= 33) {
-            return 'green'
-          } else if (difficulty <= 66) {
-            return 'orange'
-          } else {
-            return 'red'
-          }
-        }
-      },
-      watch: {
-        loader () {
-          const l = this.loader
-          this[l] = !this[l]
-
-          setTimeout(() => (this[l] = false), 3000)
-
-          this.loader = null
-        }
+        showlabel: false,
+        show0: false,
+        show1: false,
+        loader: null,
+        loading2: false
       }
-      // },
-      // computed: {
-      //   colorIcon: function (difficulty) {
-      //     console.log(difficulty)
-      //     if (difficulty <= 33) {
-      //       return 'green'
-      //     } else if (difficulty <= 66) {
-      //       return 'orange'
-      //     } else {
-      //       return 'red'
-      //     }
-      //   }
-      // }
+    },
+    methods: {
+      toggle (card) {
+        card.visible = !card.visible
+      },
+      expandAllCards: function (event) {
+        console.log(this.cards)
+        for (var card in this.cards) {
+          console.log(this.cards[card].name)
+          this.cards[card].visible = true
+        }
+      },
+      collapseAllCards () {
+        for (var card in this.cards) {
+          this.cards[card].visible = false
+        }
+      },
+      colorIcon: function (difficulty) {
+        console.log(difficulty)
+        if (difficulty <= 33) {
+          return 'green'
+        } else if (difficulty <= 66) {
+          return 'orange'
+        } else {
+          return 'red'
+        }
+      },
+      toggleFav: function (favIdIndex) {
+        // übergabeparameter
+        // //form.fav_id[index]
+        favIdIndex = !favIdIndex
+        console.log(favIdIndex)
+        this.$forceUpdate()
+      }
+    },
+    watch: {
+      loader () {
+        const l = this.loader
+        this[l] = !this[l]
+
+        setTimeout(() => (this[l] = false), 3000)
+
+        this.loader = null
+      }
     }
+    // },
+    // computed: {
+    //   colorIcon: function (difficulty) {
+    //     console.log(difficulty)
+    //     if (difficulty <= 33) {
+    //       return 'green'
+    //     } else if (difficulty <= 66) {
+    //       return 'orange'
+    //     } else {
+    //       return 'red'
+    //     }
+    //   }
+    // }
+  }
 </script>
 
 <style scoped>
-#buttonbar{
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  margin-top: 150px;
-}
-#buttonbarcard{
-  position: absolute;
-  bottom: 0px;
-  left:0px;
-  /*right: 0px;*/
-  /*background: black;*/
-  width: 100%;
-  margin-left: 0px;
-  margin-right: 0px;
-}
-#loadTask{
-  color: red;
-  opacity: 1;
-  width: 60%;
-}
-.favIcon{
-  position: absolute;
-  bottom:0px;
-  right: 18px;
-  /*outline-color: red;*/
-  /*outline-width: 2px;*/
-}
+  #buttonbar{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+  #buttonbarcard{
+    position: absolute;
+    bottom: 0px;
+    left:0px;
+    /*right: 0px;*/
+    /*background: black;*/
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  #loadTask{
+    color: black;
+    opacity: 1;
+    width: 60%;
+  }
+  .favIcon{
+    position: absolute;
+    bottom:0px;
+    right: 18px;
+    /*outline-color: red;*/
+    /*outline-width: 2px;*/
+  }
 </style>
