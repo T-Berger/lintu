@@ -8,12 +8,18 @@
           :key="card.id"
         >
           <v-card raised>
-            <v-btn centered v-on:click="toggle(card)">
-              <v-icon x-large v-bind:style="{ color: colorIcon(card.difficulty)}">
-                mdi-linux
-              </v-icon>
-              <v-icon v-if="form.fav_id[index] == true" v-model="form.fav_id[index]" color="yellow accent-4" class="favIcon">mdi-star</v-icon>
-            </v-btn>
+            <div id="buttonbackground" v-on:click="toggle(card)" ref="parentDiv"
+                 v-ripple class="elevation-6" v-bind:style="{ background: colorBackgroundDivWithIconButton(card.visible)}"
+            >
+              <v-btn centered >   <!--ref="iconChildButton"-->
+                <v-icon x-large v-on:Click="parentDiv.click()" v-bind:style="{ color: colorIcon(card.difficulty)}">
+                  mdi-linux
+                </v-icon>
+                <v-icon v-if="form.fav_id[index] == true" v-model="form.fav_id[index]" color="yellow accent-4" class="favIcon">
+                  mdi-star
+                </v-icon>
+              </v-btn>
+            </div>
             <v-layout v-show="card.visible" v-model="form.parent_id[index]">
               <v-card-title primary-title class="mb-4 pb-4">
                 <div>
@@ -106,6 +112,14 @@
           return 'red'
         }
       },
+      colorBackgroundDivWithIconButton: function (visible) {
+        console.log(visible)
+        if (visible === true) {
+          return 'lightgrey'
+        } else {
+          return 'white'
+        }
+      },
       toggleFav: function (favIdIndex) {
         // übergabeparameter
         // //form.fav_id[index]
@@ -167,5 +181,9 @@
     right: 18px;
     /*outline-color: red;*/
     /*outline-width: 2px;*/
+  }
+  #buttonbackground{
+    background-color: lightgrey;
+    width: 100%;
   }
 </style>
