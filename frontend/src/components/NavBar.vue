@@ -79,10 +79,6 @@
       }
     },
     methods: {
-      onClick () {
-        console.log('Hallo')
-        this.$root.$emit('custom', 'hallo')
-      },
       switchStartButton: function () {
         this.$store.commit('switchStartMenuButton')
       },
@@ -98,36 +94,6 @@
         this.$nextTick(function () {
           this.$store.commit('scroll', id)
         })
-        this.$forceUpdate()
-      },
-      selectedStartMenuIconOnlyOn: function () {
-        $('#startmenü-icon').addClass('selected')
-        // STARTMENÜ LADEN
-        $('#headerbar').hide()
-        $('.list-item > img').hide()
-        // show
-        $('#powerbutton').show()
-      // },
-      // scroll: function (h) {
-      //   var top = document.getElementById(h).offsetTop // Getting Y of target element
-      //   console.log(top)
-      //   console.log('scroll')
-      //   console.log(h)
-      //   window.scrollTo(0, 1000)
-      // },
-      // jumpstartMenu: function (h) {
-      //   this.$nextTick(function () {
-      //     this.$store.commit('switchStartMenuButtonOnTrue')
-      //   })
-      //   setTimeout(function () { console.log('Hello') }, 3000)
-      //
-      //     this.selectedStartMenuIconOnlyOn()
-      //     var top = document.getElementById(h).offsetTop // Getting Y of target element
-      //     console.log(top)
-      //     console.log('Hallo_')
-      //     console.log(h)
-      //     window.scrollTo(0, 1000)
-                             // Go there directly or some transition
       }
     }
   }
