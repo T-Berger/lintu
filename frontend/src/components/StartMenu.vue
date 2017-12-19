@@ -1,6 +1,6 @@
-<template class="startmenü-display scroll-y"
-          id="scroll-target"
->
+<template>
+<!--&gt;class="startmenü-display scroll-y"-->
+  <!--id="scroll-target"-->
   <v-layout class="startmenü-display"
             v-scroll="{
             target: '#scroll-target',
@@ -9,7 +9,7 @@
     <v-flex class="startmenü-display">
       <task-loader class="startmenü-display"/>
       <br>
-      <p >
+      <p id="scroll">
         "But I must explain to you how all this mistaken idea of denouncing pleasur
         e and praising pain was born and I will give you a complete account of the system,
         and expound the actual teachings of the great explorer of the truth, the master-build

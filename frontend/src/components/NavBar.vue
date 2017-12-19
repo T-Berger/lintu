@@ -12,13 +12,13 @@
       <div v-for="(item,index) in items" :key="item.icon">
       <li>
         <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
-          <a class="list-item" v-on:click="jumpstartMenu('profil')"  slot="activator">
+          <a class="list-item" v-on:click="onClick()"  slot="activator">
             <v-icon dark>{{item.icon}}</v-icon>
           </a>
           <span>{{item.tooltip}}</span>
         </v-tooltip>
         <v-tooltip right v-else="" v-model="form._id[index]">
-          <a class="list-item" v-on:click="jumpstartMenu('profil')"  slot="activator">
+          <a class="list-item" v-on:click="onClick()"  slot="activator">
             <v-icon dark>{{item.icon}}</v-icon>
           </a>
           <span>{{item.tooltip}}</span>
@@ -62,10 +62,12 @@
 
 </template>
 <script>
+    // import App from '../App'
     export default {
       name: 'nav-bar',
       data () {
         return {
+          props: ['addStatusClass'],
           items: [
             {icon: 'fa-chevron-circle-right', tooltip: 'dashboard'},
             {icon: 'fa-cogs', tooltip: 'question_answer'},
@@ -78,6 +80,10 @@
         }
       },
       methods: {
+        onClick () {
+          console.log('Hallo')
+          this.$root.$emit('custom', 'hallo')
+        },
         switchStartButton: function () {
           this.$store.commit('switchStartMenuButton')
         },
@@ -94,15 +100,19 @@
           $('.list-item > img').hide()
           // show
           $('#powerbutton').show()
-        },
-        jumpstartMenu: function (h) {
-          this.$store.commit('switchStartMenuButtonOnTrue')
-          this.selectedStartMenuIconOnlyOn()
-          var top = document.getElementById(h).offsetTop // Getting Y of target element
-          console.log(top)
-          console.log('Hallo_')
-          console.log(h)
-          window.scrollTo(0, 1000)                        // Go there directly or some transition
+        // },
+        // jumpstartMenu: function (h) {
+        //   App.$nextTick(function () {
+        //     this.$store.commit('switchStartMenuButtonOnTrue')
+        //   })
+        //   App.$nextTick(function () {
+        //     this.selectedStartMenuIconOnlyOn()
+        //     var top = document.getElementById(h).offsetTop // Getting Y of target element
+        //     console.log(top)
+        //     console.log('Hallo_')
+        //     console.log(h)
+        //     window.scrollTo(0, 1000)
+        //   })                       // Go there directly or some transition
         }
       }
     }

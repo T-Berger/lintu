@@ -5,7 +5,7 @@
 
 
       <main>
-        <nav-bar />
+        <nav-bar @custom="jumpHandler('parent data', ...arguments)"/>  <!--:jumpstartmenu="jumpstartMenu()"  -->
         <page-header :task="task"/>
         <aufgaben :task="task"/>
 
@@ -45,6 +45,36 @@
     computed: {
       startMenuActive () {
         return this.$store.state.startMenuButton
+      // },
+      // jumpstartMenu: function (h) {
+      //   this.$nextTick(function () {
+      //     this.$store.commit('switchStartMenuButtonOnTrue')
+      //   })
+      //   this.$nextTick(function () {
+      //     this.selectedStartMenuIconOnlyOn()
+      //     var top = document.getElementById(h).offsetTop // Getting Y of target element
+      //     console.log(top)
+      //     console.log('Hallo_')
+      //     console.log(h)
+      //     window.scrollTo(0, top)
+      //   })                       // Go there directly or some transition
+    //   },
+    // selectedStartMenuIconOnlyOn: function () {
+    //   $('#startmenü-icon').addClass('selected')
+    //   // STARTMENÜ LADEN
+    //   $('#headerbar').hide()
+    //   $('.list-item > img').hide()
+    //   // show
+    //   $('#powerbutton').show()
+    // },
+    //   jumpHandler (parent, id) {
+    //     console.log(parent)
+    //     this.$store.commit('switchStartMenuButtonOnTrue')
+    //     var top = document.getElementById(id[0]).offsetTop // Getting Y of target element
+    //     console.log(top)
+    //     console.log('Hallo_')
+    //     console.log(id[0])
+    //     window.scrollTo(0, top)
       }
     }
   }
