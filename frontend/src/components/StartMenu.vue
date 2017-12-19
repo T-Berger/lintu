@@ -61,6 +61,18 @@
         onScroll (e) {
           this.offsetTop = e.target.scrollTop
         }
+      },
+      mounted: {
+        startMenuMounted: function () {
+          console.log('startMenuMountedOnTrue')
+          this.$store.commit('startMenuMountedOnTrue')
+        }
+      },
+      beforeDestroy: {
+        startMenuDestroy: function () {
+          console.log('startMenuDestroy')
+          this.$store.commit('startMenuMountedOnFalse')
+        }
       }
     }
 </script>

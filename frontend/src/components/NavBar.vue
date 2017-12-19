@@ -10,29 +10,29 @@
     <!--Navbar-icons-->
     <ul id="ul-navbar">
       <div v-for="(item,index) in items" :key="item.icon">
-      <li>
-        <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
-          <a class="list-item" v-on:click="onClick()"  slot="activator">
-            <v-icon dark>{{item.icon}}</v-icon>
-          </a>
-          <span>{{item.tooltip}}</span>
-        </v-tooltip>
-        <v-tooltip right v-else="" v-model="form._id[index]">
-          <a class="list-item" v-on:click="onClick()"  slot="activator">
-            <v-icon dark>{{item.icon}}</v-icon>
-          </a>
-          <span>{{item.tooltip}}</span>
-        </v-tooltip>
-      </li>
+        <li>
+          <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
+            <a class="list-item" v-on:click="scrollMenu('scroll')"  slot="activator">
+              <v-icon dark>{{item.icon}}</v-icon>
+            </a>
+            <span>{{item.tooltip}}</span>
+          </v-tooltip>
+          <v-tooltip right v-else="" v-model="form._id[index]">
+            <a class="list-item" v-on:click="scrollMenu('scroll')"  slot="activator">
+              <v-icon dark>{{item.icon}}</v-icon>
+            </a>
+            <span>{{item.tooltip}}</span>
+          </v-tooltip>
+        </li>
       </div>
       <li>
         <!--<v-tooltip right v-model="toogletooltip">-->
-          <!--<button class="list-button" v-on:click="toogle()" slot="activator">-->
-            <!--<v-icon dark>fa-info-circle</v-icon>-->
-          <!--</button>-->
-          <!--<span>Toogle Tooltip</span>-->
+        <!--<button class="list-button" v-on:click="toogle()" slot="activator">-->
+        <!--<v-icon dark>fa-info-circle</v-icon>-->
+        <!--</button>-->
+        <!--<span>Toogle Tooltip</span>-->
         <!--</v-tooltip>-->
-      <!--</li>-->
+        <!--</li>-->
 
       <li>
         <button class="list-button" v-on:click="toogle()">
@@ -62,60 +62,75 @@
 
 </template>
 <script>
-    // import App from '../App'
-    export default {
-      name: 'nav-bar',
-      data () {
-        return {
-          props: ['addStatusClass'],
-          items: [
-            {icon: 'fa-chevron-circle-right', tooltip: 'dashboard'},
-            {icon: 'fa-cogs', tooltip: 'question_answer'},
-            {icon: 'fa-info-circle', tooltip: 'question_answer'}
-          ],
-          form: {
-            _id: []
-          },
-          toogletooltip: false
+  export default {
+    name: 'nav-bar',
+    data () {
+      return {
+        props: ['addStatusClass'],
+        items: [
+          {icon: 'fa-chevron-circle-right', tooltip: 'dashboard'},
+          {icon: 'fa-cogs', tooltip: 'question_answer'},
+          {icon: 'fa-info-circle', tooltip: 'question_answer'}
+        ],
+        form: {
+          _id: []
+        },
+        toogletooltip: false
+      }
+    },
+    methods: {
+      onClick () {
+        console.log('Hallo')
+        this.$root.$emit('custom', 'hallo')
+      },
+      switchStartButton: function () {
+        this.$store.commit('switchStartMenuButton')
+      },
+      toogle: function (event) {
+        this.toogletooltip = !this.toogletooltip
+        if (this.toogletooltip === false) {
+          this.$forceUpdate()
         }
       },
-      methods: {
-        onClick () {
-          console.log('Hallo')
-          this.$root.$emit('custom', 'hallo')
-        },
-        switchStartButton: function () {
-          this.$store.commit('switchStartMenuButton')
-        },
-        toogle: function (event) {
-          this.toogletooltip = !this.toogletooltip
-          if (this.toogletooltip === false) {
-            this.$forceUpdate()
-          }
-        },
-        selectedStartMenuIconOnlyOn: function () {
-          $('#startmenü-icon').addClass('selected')
-          // STARTMENÜ LADEN
-          $('#headerbar').hide()
-          $('.list-item > img').hide()
-          // show
-          $('#powerbutton').show()
-        // },
-        // jumpstartMenu: function (h) {
-        //   App.$nextTick(function () {
-        //     this.$store.commit('switchStartMenuButtonOnTrue')
-        //   })
-        //   App.$nextTick(function () {
-        //     this.selectedStartMenuIconOnlyOn()
-        //     var top = document.getElementById(h).offsetTop // Getting Y of target element
-        //     console.log(top)
-        //     console.log('Hallo_')
-        //     console.log(h)
-        //     window.scrollTo(0, 1000)
-        //   })                       // Go there directly or some transition
-        }
+      scrollMenu: function (id) {
+        this.$store.commit('switchStartMenuButtonOnTrue')
+        console.log('OK')
+        this.$nextTick(function () {
+          this.$store.commit('scroll', id)
+        })
+        this.$forceUpdate()
+      },
+      selectedStartMenuIconOnlyOn: function () {
+        $('#startmenü-icon').addClass('selected')
+        // STARTMENÜ LADEN
+        $('#headerbar').hide()
+        $('.list-item > img').hide()
+        // show
+        $('#powerbutton').show()
+      // },
+      // scroll: function (h) {
+      //   var top = document.getElementById(h).offsetTop // Getting Y of target element
+      //   console.log(top)
+      //   console.log('scroll')
+      //   console.log(h)
+      //   window.scrollTo(0, 1000)
+      // },
+      // jumpstartMenu: function (h) {
+      //   this.$nextTick(function () {
+      //     this.$store.commit('switchStartMenuButtonOnTrue')
+      //   })
+      //   setTimeout(function () { console.log('Hello') }, 3000)
+      //
+      //     this.selectedStartMenuIconOnlyOn()
+      //     var top = document.getElementById(h).offsetTop // Getting Y of target element
+      //     console.log(top)
+      //     console.log('Hallo_')
+      //     console.log(h)
+      //     window.scrollTo(0, 1000)
+                             // Go there directly or some transition
       }
     }
+  }
 </script>
 
 <style scoped>
@@ -210,11 +225,11 @@
     background-color: #303030;
   }
   button{
-     background-color: buttonface;
-     color: black;
+    background-color: buttonface;
+    color: black;
 
 
-   }
+  }
   button.selected{
     color:white !important;
     background-color: #303030 !important;

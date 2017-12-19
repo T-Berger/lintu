@@ -5,11 +5,11 @@
 
 
       <main>
-        <nav-bar @custom="jumpHandler('parent data', ...arguments)"/>  <!--:jumpstartmenu="jumpstartMenu()"  -->
+        <nav-bar/>  <!--:jumpstartmenu="jumpstartMenu()"  -->
         <page-header :task="task"/>
         <aufgaben :task="task"/>
 
-        <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü"/>
+        <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" />
 
           <!--<span>{{ startMenuActive }}</span>-->
 
