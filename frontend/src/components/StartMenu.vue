@@ -1,11 +1,5 @@
 <template>
-<!--&gt;class="startmenü-display scroll-y"-->
-  <!--id="scroll-target"-->
-  <v-layout class="startmenü-display"
-            v-scroll="{
-            target: '#scroll-target',
-            callback: this.onScroll
-          }">
+  <v-layout>
     <v-flex class="startmenü-display">
       <task-loader class="startmenü-display"/>
       <br>
@@ -57,17 +51,14 @@
       methods: {
         toggle (card) {
           card.visible = !card.visible
-        },
-        onScroll (e) {
-          this.offsetTop = e.target.scrollTop
         }
       },
-      mounted: {
-        startMenuMounted: function () {
-          console.log('startMenuMountedOnTrue')
-          this.$store.commit('startMenuMountedOnTrue')
-        }
-      },
+      // mounted: {
+      //   // startMenuMounted: function () {
+      //   //   console.log('startMenuMountedOnTrue')
+      //   //   this.$store.commit('startMenuMountedOnTrue')
+      //   // }
+      // },
       beforeDestroy: {
         startMenuDestroy: function () {
           console.log('startMenuDestroy')
