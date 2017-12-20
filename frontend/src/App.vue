@@ -5,17 +5,15 @@
         <nav-bar/>
         <page-header :task="task"/>
         <aufgaben :task="task"/>
-<<<<<<< HEAD
 
         <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>
 
-||||||| merged common ancestors
 
         <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü"/>
 
-=======
+
         <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü"/>
->>>>>>> konsolenAbsturz
+
           <!--<span>{{ startMenuActive }}</span>-->
           <router-view></router-view>
 
