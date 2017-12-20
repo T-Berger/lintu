@@ -1,18 +1,23 @@
 <template>
 
   <div id="editor">
-    <textarea :value="input" @input="update"></textarea>
+    
     <div v-html="compiledMarkdown">
-
     </div>
   </div>
 </template>
 
 <script>
+ // <!--<script src="https://unpkg.com/marked@0.3.6">
+// <!--<script src="https://unpkg.com/lodash@4.16.0"
+    import marked from 'marked'
+    import _ from 'lodash'
     export default {
       name: 'task',
-      data: {
-        input: '# hello'
+      data () {
+        return {
+          input: '# hello __Advertisement :)__'
+        }
       },
       computed: {
         compiledMarkdown: function () {
