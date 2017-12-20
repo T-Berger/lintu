@@ -1,18 +1,12 @@
 <template>
   <div id="app">
     <v-app>
-
-
-
       <main>
         <nav-bar />
         <page-header :task="task"/>
         <aufgaben :task="task"/>
-
         <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü"/>
-
           <!--<span>{{ startMenuActive }}</span>-->
-
           <router-view></router-view>
 
       </main>
