@@ -18,18 +18,22 @@
         ltant pleasure?"
       </p>
       <list-setting  class="startmenü-display"/>
-
+      <profil id="profil"/>
+      <div id="voidScroll"></div>
     </v-flex>
+
   </v-layout>
 </template>
 
 <script>
     import ListSetting from './startmenu/ListSetting'
     import TaskLoader from './startmenu/TaskLoader'
+    import Profil from './startmenu/Profil'
     export default {
       name: 'start-menu',
       components: {
         ListSetting,
+        Profil,
         TaskLoader
       },
       data () {
@@ -75,5 +79,9 @@
     color:white;
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
+  }
+  #voidScroll{
+    height: 25vw;
+    display: block;
   }
 </style>

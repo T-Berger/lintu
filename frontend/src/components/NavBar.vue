@@ -12,13 +12,13 @@
       <div v-for="(item,index) in items" :key="item.icon">
         <li>
           <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
-            <a class="list-item" v-on:click="scrollMenu('scroll')"  slot="activator">
+            <a class="list-item" v-on:click="scrollMenu(item.jumpId)"  slot="activator">
               <v-icon dark>{{item.icon}}</v-icon>
             </a>
             <span>{{item.tooltip}}</span>
           </v-tooltip>
           <v-tooltip right v-else="" v-model="form._id[index]">
-            <a class="list-item" v-on:click="scrollMenu('scroll')"  slot="activator">
+            <a class="list-item" v-on:click="scrollMenu(item.jumpId)"  slot="activator">
               <v-icon dark>{{item.icon}}</v-icon>
             </a>
             <span>{{item.tooltip}}</span>
@@ -68,9 +68,9 @@
       return {
         props: ['addStatusClass'],
         items: [
-          {icon: 'fa-chevron-circle-right', tooltip: 'dashboard'},
-          {icon: 'fa-cogs', tooltip: 'question_answer'},
-          {icon: 'fa-info-circle', tooltip: 'question_answer'}
+          {jumpId: 'profil', icon: 'fa-chevron-circle-right', tooltip: 'dashboard'},
+          {jumpId: 'profil', icon: 'fa-cogs', tooltip: 'question_answer'},
+          {jumpId: 'profil', icon: 'fa-info-circle', tooltip: 'question_answer'}
         ],
         form: {
           _id: []

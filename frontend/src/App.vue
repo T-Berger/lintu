@@ -9,7 +9,7 @@
         <page-header :task="task"/>
         <aufgaben :task="task"/>
 
-        <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" />
+        <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>
 
           <!--<span>{{ startMenuActive }}</span>-->
 
@@ -62,7 +62,7 @@
   #startmenü{
     position: absolute;
     left: var(--breiteNavbar-);
-    height: 100%;
+    width: 100%;
     color:white;
     background: rgba(33, 33, 33, 0.6) !important;
     width:calc(100% - var(--breiteNavbar-)) !important;
