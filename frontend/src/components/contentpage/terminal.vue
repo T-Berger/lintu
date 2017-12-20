@@ -61,11 +61,10 @@
     font-weight: lighter;
     font-family: 'Ubuntu Mono', monospace;
     color: white;
-    height: 100vh;
-    width: 100vh;
-    resize: both;
+    height: 50vh;
+    width: 200vh;
     overflow: hidden;
-    margin-left: 5%;
+    /*margin-left: 5%;*/
     text-align: left;
   }
 

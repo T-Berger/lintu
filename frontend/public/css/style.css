@@ -33,13 +33,12 @@ header{
 #display {
     margin-top: 5vw;
     margin-left:5vw;
-    padding: 10px 50px;
     /*z-index: -1;*/
-}
+}/*
 #terminalInput {
     background-color: var(--colorTerminal-);
     color: var(--fontcolorTerminal-);
-    /*height: auto;*/
+    height: auto;
     display: inline;
     position: relative;
     font-size: 14.3px;
@@ -52,14 +51,14 @@ header{
     font-stretch: normal;
     line-height: normal;
 
-}
+}*//*
 #terminalInput label{
     vertical-align: top;
     overflow: auto;
     width: var(--laengeUsername-);
     position: absolute;
 
-}
+}*/
 #input {
 
     color: var(--fontcolorTerminal-);
