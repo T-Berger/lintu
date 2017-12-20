@@ -1,6 +1,10 @@
 <template>
 
   <div id="editor">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 039189d754c4523dc2a8973042122e1a3dbff68b
     <div v-html="compiledMarkdown">
     </div>
   </div>
@@ -34,8 +38,10 @@
 
 <style scoped>
   html, body, #editor {
+    background-color: yellow;
     margin: 0;
-    height: 100%;
+    height: 40vh;
+    width: 200vh;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: #333;
   }

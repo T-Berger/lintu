@@ -7,8 +7,8 @@
     </div>
     <label for = terminalInput>hallo ----></label>
     <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()"
-   v-on:keydown.delete.prevent="notDeletableLabel()">
-    <!--v-on:keyup.delete="notDeletableLabel()"-->
+           v-on:keyup.up="moveHistoryUp()" v-on:keyup.down="moveHistoryDown()"
+           v-on:keydown.delete.prevent="notDeletableLabel()">
   </div>
 </template>
 
@@ -19,7 +19,8 @@
         return {
           historyinput: [],
           input: 'USERNAME ',
-          inputLabel: 'USERNAME '
+          inputLabel: 'USERNAME ',
+          counter: 0
         }
       },
       methods: {
@@ -28,6 +29,7 @@
           this.historyinput.push(this.input)
           this.input = this.inputLabel
           console.log(this.inputLabel)
+          this.counter = this.historyinput.length
         },
         notDeletableLabel () {
           var inputDeletable = this.input.substr(this.input.length - (this.input.length - this.inputLabel.length))
