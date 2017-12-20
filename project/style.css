@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+
 :root{
     --colorTerminal-: black;
     --colorborderTerminal-: grey;
@@ -27,60 +29,52 @@ header{
     margin: 0px;
     overflow: auto;
 }
-#display {
-    margin-top: 5vw;
-    margin-left:5vw;
-    padding: 10px 50px;
+#layout{
+    overflow: hidden;
+    height: 100vh;
+    width:100%;
+    left: 5%;
 }
-#terminalInput {
-    background-color: var(--colorTerminal-);
-    color: var(--fontcolorTerminal-);
-    /*height: auto;*/
-    display: inline;
-    position: relative;
-    font-size: 14.3px;
-    font-family: Arial;
-    font-style: normal;
-    font-variant-ligatures: normal;
-    font-variant-caps: normal;
-    font-variant-numeric: normal;
-    font-weight: normal;
-    font-stretch: normal;
-    line-height: normal;
-
+#aufgabe {
+    background-color:white;
+    color:black;
+    resize: both;
+    height:44vh;
+    width:100%;
+    overflow: hidden;
+    margin-left: 5%;
+    margin-top: 5%;
 }
-#terminalInput label{
-    vertical-align: top;
-    overflow: auto;
-    width: var(--laengeUsername-);
-    position: absolute;
-
+#terminal {
+    background-color: black;
+    word-spacing: 3px;
+    font-weight: lighter;
+    font-family: 'Ubuntu Mono', monospace;
+    color: white;
+    height:50vh;
+    width:100%;
+    resize: both;
+    overflow:hidden;
+    margin-left: 5%;
 }
-#input {
 
-    color: var(--fontcolorTerminal-);
-    background-color: var(--colorTerminal-);
-    align-self: baseline;
-    text-indent: var(--laengeUsername-);
-    border: none;
+#terminalInput{
+    background-color: black;
+    border-color:black;
+    height: auto;
     width: 100%;
-    max-width: 100%;
-    text-decoration: none;
-    padding: 0px;
-    outline: none;
-    font-size: 14.3px;
-    font-family: Arial;
-    font-style: normal;
-    font-variant-ligatures: normal;
-    font-variant-caps: normal;
-    font-variant-numeric: normal;
-    font-weight: normal;
-    font-stretch: normal;
-    line-height: normal;
-    /*   -webkit-appearance: none;
-
-   /*  position: relative;
-        left: auto;
-    */
+    color: white;
+    outline:none;
+    font-family: 'Ubuntu Mono', monospace;
 }
 
+#horizontal{
+    cursor: row-resize;
+    width: 100%;
+    height: 4px;
+    position:absolute;
+}
+
+div{
+    display:block;
+}

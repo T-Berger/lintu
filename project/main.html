@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Lintu - Ein Linux Tutorial</title>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen">
     <!--Biblothek Autosize js von http://www.jacklmoore.com/autosize/ -->
     <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script language="JavaScript" src="functions.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue-resource"></script>
 </head>
 <body>
     <header>
@@ -15,29 +18,18 @@
 
 
     </header>
-    <div id="display">
+    <div id="layout">
         <!--Aufgabenbeschreibung-->
-        <div>
-            <p id="task">
-
-            </p>
+        <div id="aufgabe">
+            Aufgabe
         </div>
         <!--Terminal-->
-        <div id="terminal">
-            <!--Ausgabe-->
-            <div id="terminalOutput">
-                <ul id="output">
-                </ul>
+        <div id= "terminal">
+            <div v-for='(history, index) in historyInput'>
+                <span> hallo ---> </span>
+                <span>{{ historyInput[index]}}</span>
             </div>
-            <!--Input-->
-            <div id="terminalInput">
-                <!-- username-->
-                <label id="usernameInput" for="input">
-                    Hallo
-                </label>
-                <textarea name="input" type="text" id="input" autofocus spellcheck="false">
-            </textarea>
-            </div>
+            <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()">
         </div>
     </div>
     <!--Navbar-->
