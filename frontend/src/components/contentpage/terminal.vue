@@ -38,24 +38,7 @@
           console.log(this.input)
           this.input = this.input.slice(0, (this.input.length - 1))
           console.log(this.input)
-
-          // if (this.inputLabel.length === this.input.length){
-          //
-          // }
-          /* WIRD ANDERS GELÖST MIT
-          var labelTemplate = this.inputLabel.substr(this.inputLabel.length - 4)
-          console.log(labelTemplate)
-          console.log(labelTemplate.charAt(labelTemplate.length - 1))
-          console.log(this.input.charAt(this.input.length - 1))
-          if (labelTemplate.charAt(labelTemplate.length - 1) === this.input.charAt(this.input.length - 1)) {
-            console.log('not delete')
-          } else {
-            this.input.slice(0, ((this.input.length - 1) - 1)) // DAS HIER IST UNNÖTIG DA SOWIESO DAS BACKSPACE AUSGEFÜHRT WIRD
-          } */
         }
-      // },
-      // computed: {
-      //   // inputLabelPlusInput: {
       }
     }
 </script>
