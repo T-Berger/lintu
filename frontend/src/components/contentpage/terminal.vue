@@ -2,10 +2,10 @@
   <!--Terminal-->
   <div id= "terminal">
     <div v-for='(history, index) in historyinput'>
-      <span> hallo ----> </span>
+      <span> hallo ---> </span>
       <span>{{ historyinput[index]}}</span>
     </div>
-    <label for = terminalInput>hallo ----></label>
+    <label for = terminalInput>hallo ---></label>
     <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()" v-on:keyup.up="moveHistoryUp()" v-on:keyup.down="moveHistoryDown()">
   </div>
 </template>
