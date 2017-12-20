@@ -1,13 +1,12 @@
 <template>
   <!--Terminal-->
   <div id= "terminal">
-    <div v-for='(history, index) in historyInput'>
+    <div v-for='(history, index) in historyinput'>
       <span> hallo ---> </span>
-      <span>{{ historyInput[index]}}</span>
+      <span>{{ historyinput[index]}}</span>
     </div>
-    <div id ="form">
+    <label for = terminalInput>hallo ---></label>
     <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()">
-  </div>
   </div>
 </template>
 
@@ -31,17 +30,19 @@
 </script>
 
 <style scoped>
+  @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
   #terminal {
     background-color: black;
     word-spacing: 3px;
     font-weight: lighter;
     font-family: 'Ubuntu Mono', monospace;
     color: white;
-    height: 50vh;
-    width: 100%;
+    height: 100vh;
+    width: 100vh;
     resize: both;
     overflow: hidden;
     margin-left: 5%;
+    text-align: left;
   }
 
   #terminalInput {
