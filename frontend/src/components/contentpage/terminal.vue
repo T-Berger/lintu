@@ -2,7 +2,7 @@
   <!--Terminal-->
   <div id= "terminal">
     <div v-for='(history, index) in historyinput'>
-      <span> hallo ----> </span>
+      <span> hallo ---> </span>
       <span>{{ historyinput[index]}}</span>
     </div>
     <label for = terminalInput>hallo ----></label>
@@ -40,6 +40,28 @@
           console.log(this.input)
           this.input = this.input.slice(0, (this.input.length - 1))
           console.log(this.input)
+        },
+        moveHistoryDown () {
+          this.counter++
+          if (this.counter > this.historyinput.length) {
+            this.counter--
+            this.input = ''
+            console.log(this.counter)
+          } else {
+            this.input = this.historyinput[this.counter]
+            console.log(this.counter)
+          }
+        },
+        moveHistoryUp () {
+          this.counter--
+          if (this.counter < 0) {
+            this.counter++
+            this.input = this.historyinput[this.counter]
+            console.log(this.counter)
+          } else {
+            this.input = this.historyinput[this.counter]
+            console.log(this.counter)
+          }
         }
       }
     }
@@ -53,11 +75,10 @@
     font-weight: lighter;
     font-family: 'Ubuntu Mono', monospace;
     color: white;
-    height: 100vh;
-    width: 100vh;
-    resize: both;
+    height: 50vh;
+    width: 200vh;
     overflow: hidden;
-    margin-left: 5%;
+    /*margin-left: 5%;*/
     text-align: left;
   }
 
