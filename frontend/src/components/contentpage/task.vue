@@ -1,10 +1,6 @@
 <template>
 
   <div id="editor">
-<<<<<<< HEAD
-=======
-
->>>>>>> 039189d754c4523dc2a8973042122e1a3dbff68b
     <div v-html="compiledMarkdown">
     </div>
   </div>
