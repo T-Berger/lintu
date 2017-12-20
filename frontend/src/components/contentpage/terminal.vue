@@ -6,7 +6,7 @@
       <span>{{ historyinput[index]}}</span>
     </div>
     <label for = terminalInput>hallo ----></label>
-    <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()">
+    <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()" v-on:keyup.up="moveHistoryUp()" v-on:keyup.down="moveHistoryDown()">
   </div>
 </template>
 
@@ -16,7 +16,8 @@
       data () {
         return {
           historyinput: [],
-          input: ''
+          input: '',
+          counter: 0
         }
       },
       methods: {
@@ -24,6 +25,29 @@
           console.log(this.input)
           this.historyinput.push(this.input)
           this.input = ''
+          this.counter = this.historyinput.length
+        },
+        moveHistoryDown () {
+          this.counter++
+          if (this.counter > this.historyinput.length) {
+            this.counter--
+            this.input = ''
+            console.log(this.counter)
+          } else {
+            this.input = this.historyinput[this.counter]
+            console.log(this.counter)
+          }
+        },
+        moveHistoryUp () {
+          this.counter--
+          if (this.counter < 0) {
+            this.counter++
+            this.input = this.historyinput[this.counter]
+            console.log(this.counter)
+          } else {
+            this.input = this.historyinput[this.counter]
+            console.log(this.counter)
+          }
         }
       }
     }
