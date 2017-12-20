@@ -1,7 +1,6 @@
 <template>
 
   <div id="editor">
-    
     <div v-html="compiledMarkdown">
     </div>
   </div>
