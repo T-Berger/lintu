@@ -45,7 +45,7 @@
           this.counter++
           if (this.counter > this.historyinput.length) {
             this.counter--
-            this.input = ''
+            this.input = 'USERNAME'
             console.log(this.counter)
           } else {
             this.input = this.historyinput[this.counter]
@@ -80,6 +80,8 @@
     overflow: hidden;
     /*margin-left: 5%;*/
     text-align: left;
+    padding-left: 10vh;
+    padding-top: 2vh;
   }
 
   #terminalInput {
