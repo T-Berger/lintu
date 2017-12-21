@@ -43,9 +43,9 @@
         },
         moveHistoryDown () {
           this.counter++
-          if (this.counter > this.historyinput.length) {
+          if (this.counter === this.historyinput.length | this.counter > this.historyinput.length) {
             this.counter--
-            this.input = 'USERNAME'
+            this.input = 'USERNAME '
             console.log(this.counter)
           } else {
             this.input = this.historyinput[this.counter]
