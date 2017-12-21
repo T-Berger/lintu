@@ -14,7 +14,6 @@
 
         <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü"/>
 
-          <!--<span>{{ startMenuActive }}</span>-->
           <router-view></router-view>
 
       </main>
