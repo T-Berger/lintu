@@ -43,9 +43,9 @@
         },
         moveHistoryDown () {
           this.counter++
-          if (this.counter > this.historyinput.length) {
+          if (this.counter > this.historyinput.length | this.counter === this.historyinput.length) {
             this.counter--
-            this.input = 'USERNAME'
+            this.input = 'USERNAME '
             console.log(this.counter)
           } else {
             this.input = this.historyinput[this.counter]
@@ -58,6 +58,9 @@
             this.counter++
             this.input = this.historyinput[this.counter]
             console.log(this.counter)
+            if (this.historyinput.length === 0) {
+              this.input = this.inputLabel
+            }
           } else {
             this.input = this.historyinput[this.counter]
             console.log(this.counter)
