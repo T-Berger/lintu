@@ -41,7 +41,7 @@
       </li>
 
       <li>
-        <a id="arrowcrosslist" class="list-item" href="#">
+        <a id="arrowcrosslist" class="list-item" href="#" v-on:click="switchContentPageSpacing()">
           <img src="../assets/Arrow_Cross.svg" alt="||-||">
         </a>
       </li>
@@ -81,6 +81,9 @@
     methods: {
       switchStartButton: function () {
         this.$store.commit('switchStartMenuButton')
+      },
+      switchContentPageSpacing: function () {
+        this.$store.commit('switchContentPageSpacing')
       },
       toogle: function (event) {
         this.toogletooltip = !this.toogletooltip
