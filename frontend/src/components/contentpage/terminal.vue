@@ -78,10 +78,11 @@
     font-weight: lighter;
     font-family: 'Ubuntu Mono', monospace;
     color: white;
-    height: 50vh;
-    width: 200vh;
-    overflow: hidden;
+    /*height: 50vh;*/
+    /*width: 200vh;*/
+    overflow: scroll;
     /*margin-left: 5%;*/
+    float: right;
     text-align: left;
     padding-left: 10vh;
     padding-top: 2vh;

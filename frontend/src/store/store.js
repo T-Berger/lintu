@@ -7,13 +7,17 @@ export const store = new Vuex.Store({
   strict: true,
   state: {
     startMenuButton: false,
-    startMenuMounted: false
+    startMenuMounted: false,
+    contentPageSpacingVerticallyNotTriggered: true
   },
   getters: {
   },
   mutations: {
     switchStartMenuButton: state => {
       state.startMenuButton = !state.startMenuButton
+    },
+    switchContentPageSpacing: state => {
+      state.contentPageSpacingVerticallyNotTriggered = !state.contentPageSpacingVerticallyNotTriggered
     },
     switchStartMenuButtonOnTrue: state => {
       state.startMenuButton = true
