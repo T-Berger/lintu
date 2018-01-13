@@ -15,7 +15,11 @@
       name: 'task',
       data () {
         return {
-          input: '# hello __Advertisement :)__'
+          input: '_This is an assignment to the class [Programmieren 3](https://hsro-inf-prg3.github.io) at the [University of Applied Sciences Rosenheim](http://www.fh-rosenheim.de)._\n' +
+          '\n' +
+          '# Assignment 1: A (Java) software engineers toolbox\n' +
+          '\n' +
+          '\t- Back on your computer, checkout `master`, and pull the changes to update your local copy.\n'
         }
       },
       computed: {
@@ -34,12 +38,14 @@
 
 <style scoped>
   html, body, #editor {
-    background-color: yellow;
+    background-color: whitesmoke;
     margin: 0;
     height: 40vh;
     width: 200vh;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: #333;
+    overflow: scroll;
+    overflow-x: hidden;
   }
 
   textarea, #editor div {

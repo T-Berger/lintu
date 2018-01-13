@@ -77,7 +77,7 @@
   .startmenü-display{
     position: relative;
     color:white;
-    background: rgba(0, 0, 0, 0.5);
+    /*background: rgba(0, 0, 0, 0.5);*/
     width: 100%;
   }
   #voidScroll{

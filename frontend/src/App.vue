@@ -8,12 +8,6 @@
 
         <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>
 
-
-        <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü"/>
-
-
-        <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü"/>
-
           <router-view></router-view>
 
       </main>
