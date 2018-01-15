@@ -3,9 +3,7 @@
     <v-app>
       <main>
         <nav-bar/>
-        <page-header :task="task"/>
-        <aufgaben :task="task"/>
-
+        <page-header :task="task" :getReq="getReq"/>
         <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>
 
           <router-view></router-view>
@@ -19,8 +17,9 @@
   import PageHeader from '@/components/Header.vue'
   import NavBar from './components/NavBar'
   import Aufgaben from './components/Aufgaben'
-  import TasksService from '@/services/TasksService'
+  // import TasksService from '@/services/TasksService'
   import StartMenu from '@/components/StartMenu'
+  import AllTasksService from './services/AllTasksService'
   export default {
     name: 'app',
     components: {
@@ -31,16 +30,35 @@
     },
     data () {
       return {
-        task: 'Hallo'
+        task: 'Hallo',
+        response: {'HALOO': 'asadsad', 'aa': 'ASa'},
+        getReq: []
       }
     },
     async mounted () {
-      this.task = (await TasksService.index()).data
+      console.log(this.$store.state.task)
+      // console.log(this.data().responses)
+      this.$store.dispatch('storeInitFromServer')
+      console.log(this.$store.state.task)
     },
     computed: {
       startMenuActive () {
         return this.$store.state.startMenuButton
       }
+    },
+    beforeCreate: async function () {
+      console.log('Get Request Alltasks')
+      this.getReq = (await AllTasksService.init()).data
+      this.$store.commit('setAufgabenanzahl', this.getReq.length)
+      console.log('Die insgesamte Aufgaben sind' + this.getReq.length + '< Übergeben | im Store >' + this.$store.state.aufgabenanzahl)// },
+
+      // created: function () {
+      //   console.log('this.getReq')
+      //   console.log(this.getReq)
+      // },
+      // beforeDestroy: function () {
+      //   console.log('startMenuDestroy')
+      //   this.$store.commit('startMenuMountedOnFalse')
     }
   }
 </script>

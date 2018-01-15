@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-flex class="startmenü-display">
-      <task-loader class="startmenü-display"/>
+      <task-loader class="startmenü-display" :getReq="getReq"/>
       <br>
       <p id="scroll">
         "But I must explain to you how all this mistaken idea of denouncing pleasur
@@ -20,6 +20,7 @@
       <list-setting  class="startmenü-display"/>
       <profil id="profil"/>
       <div id="voidScroll"></div>
+      <v-btn v-on:click="toggle()">asasdasdas</v-btn>
     </v-flex>
 
   </v-layout>
@@ -29,6 +30,7 @@
     import ListSetting from './startmenu/ListSetting'
     import TaskLoader from './startmenu/TaskLoader'
     import Profil from './startmenu/Profil'
+    import AllTasksService from '../services/AllTasksService'
     export default {
       name: 'start-menu',
       components: {
@@ -49,12 +51,22 @@
           },
           showlabel: false,
           show0: false,
-          show1: false
+          show1: false,
+          getReq: []
+          // created:
+          //   function () {
+          //     console.log('Get Request Alltasks')
+          //     // this.getReq = (await AllTasksService.init()).data
+          //     console.log('this.getReq')
+          //
+          // }
         }
       },
       methods: {
-        toggle (card) {
-          card.visible = !card.visible
+        toggle () {
+          // card.visible = !card.visible
+          console.log('HALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLO')
+          console.log(this.getReq)
         }
       },
       // mounted: {
@@ -63,11 +75,19 @@
       //   //   this.$store.commit('startMenuMountedOnTrue')
       //   // }
       // },
-      beforeDestroy: {
-        startMenuDestroy: function () {
-          console.log('startMenuDestroy')
-          this.$store.commit('startMenuMountedOnFalse')
-        }
+      beforeCreate: async function () {
+        console.log('Get Request Alltasks')
+        this.getReq = (await AllTasksService.init()).data
+        this.$store.commit('setAufgabenanzahl', this.getReq.length)
+        console.log('Die insgesamte Aufgaben sind' + this.getReq.length + '< Übergeben | im Store >' + this.$store.state.aufgabenanzahl)// },
+
+        // created: function () {
+        //   console.log('this.getReq')
+        //   console.log(this.getReq)
+        // },
+        // beforeDestroy: function () {
+        //   console.log('startMenuDestroy')
+        //   this.$store.commit('startMenuMountedOnFalse')
       }
     }
 </script>

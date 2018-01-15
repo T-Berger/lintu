@@ -4,7 +4,7 @@
       <v-layout row wrap class="startmenü-display mb-4 pb-2">
         <v-flex
           xs3
-          v-for="(card, index) in cards"
+          v-for="(card, index) in getReq"
           :key="card.id"
         >
           <v-card raised>
@@ -23,8 +23,8 @@
             <v-layout v-show="card.visible" v-model="form.parent_id[index]">
               <v-card-title primary-title class="mb-4 pb-4">
                 <div>
-                  <h3 class="headline mb-0">{{ card.name + " " +  'name_id' + index  + card.id  }}</h3>
-                  <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+                  <h3 class="headline mb-0">{{ card.name + " " +  'card_id' + index  + card.id  }}</h3>
+                  <div>{{card.aufgabenbeschreibung}}</div>
                 </div>
               </v-card-title>
               <v-card-actions dark>
@@ -35,10 +35,11 @@
                   </v-btn>
                   <v-spacer></v-spacer>
                   <!--<v-btn flat color="white lighten 1" outline>Load</v-btn>-->
-                  <v-btn id="loadTask"
+                  <v-btn
+                    id="loadTask"
                          color="success"
                          :loading="loading2"
-                         @click.native="loader = 'loading2'"
+                         @click.native="loader = 'loading2'; loadTask(card)"
                          :disabled="loading2"
                   >
                     Load task
@@ -67,6 +68,9 @@
 <script>
   export default {
     name: 'task-loader',
+    props: [
+      'getReq'
+    ],
     data () {
       return {
         cards: [
@@ -77,7 +81,8 @@
         ],
         form: {
           parent_id: [],
-          fav_id: ['', false]
+          fav_id: ['', false],
+          performLoading: ['', false]
         },
         showlabel: false,
         show0: false,
@@ -91,19 +96,19 @@
         card.visible = !card.visible
       },
       expandAllCards: function (event) {
-        console.log(this.cards)
-        for (var card in this.cards) {
-          console.log(this.cards[card].name)
+        // console.log(this.cards)
+        for (var card in this.getReq) {
+          // console.log(this.cards[card].name)
           this.cards[card].visible = true
         }
       },
       collapseAllCards () {
-        for (var card in this.cards) {
+        for (var card in this.getReq) {
           this.cards[card].visible = false
         }
       },
       colorIcon: function (difficulty) {
-        console.log(difficulty)
+        // console.log(difficulty)
         if (difficulty <= 33) {
           return 'green'
         } else if (difficulty <= 66) {
@@ -113,7 +118,7 @@
         }
       },
       colorBackgroundDivWithIconButton: function (visible) {
-        console.log(visible)
+        // console.log(visible)
         if (visible === true) {
           return 'lightgrey'
         } else {
@@ -126,17 +131,38 @@
         favIdIndex = !favIdIndex
         console.log(favIdIndex)
         this.$forceUpdate()
+      },
+      loadTask: async function (card) {
+        console.log(card)
+        console.log('get')
+        console.log(card.id)
+        console.log(this.$store.state.task)
+        this.$store.dispatch('storeNewTaskFromServer', card.id)
+        console.log('response')
+
+        console.log('Set loading off')
+        // this.loader = null
       }
     },
     watch: {
       loader () {
         const l = this.loader
         this[l] = !this[l]
-
+        console.log(this[l])
+        // console.log('Hallo')
+        // console.log(this.card[this.index])
+        // console.log('Hallo')
+        // console.log(this.cards)
         setTimeout(() => (this[l] = false), 3000)
 
         this.loader = null
       }
+    },
+    created: function () {
+      console.log('Hoffentlich geht es')
+      console.log(this.getReq)
+      // console.log(this.props.getReq)
+      this.cards = this.getReq
     }
     // },
     // computed: {

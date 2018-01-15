@@ -1,7 +1,14 @@
 import Api from '@/services/Api'
-
 export default {
-  index () {
-    return Api().get('tasks/task')
+  init () {
+    return Api().get('tasks/task1', {
+      aufgabennummer: 'HHHAALALALAOLO'
+    })
+  },
+  index (id) {
+    console.log('tasks/task' + id)
+    return Api().get('tasks/task' + id, {
+      aufgabennummer: id
+    })
   }
 }

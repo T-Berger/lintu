@@ -3,6 +3,10 @@
   <div id="editor">
     <div v-html="compiledMarkdown">
     </div>
+    <v-btn block v-on:click="showSolution = !showSolution" v-if="showSolution">Lösung verstecken</v-btn>
+    <v-btn v-else block v-on:click="showSolution = !showSolution">Lösung anzeigen</v-btn>
+    <div v-if="showSolution == true" v-html="compiledMarkdownSolution">
+    </div>
   </div>
 </template>
 
@@ -19,12 +23,17 @@
           '\n' +
           '# Assignment 1: A (Java) software engineers toolbox\n' +
           '\n' +
-          '\t- Back on your computer, checkout `master`, and pull the changes to update your local copy.\n'
+          '\t- Back on your computer, checkout `master`, and pull the changes to update your local copy.\n',
+          solution: 'BQB',
+          showSolution: false
         }
       },
       computed: {
         compiledMarkdown: function () {
           return marked(this.input, { sanitize: true })
+        },
+        compiledMarkdownSolution: function () {
+          return marked(this.solution, { sanitize: true })
         }
       },
       methods: {

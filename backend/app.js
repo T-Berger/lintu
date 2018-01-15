@@ -13,6 +13,7 @@ var db = monk('localhost:27017/lintudb');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var task = require('./routes/task');
+var alltasks = require('./routes/alltasks');
 
 var app = express();
 
@@ -39,7 +40,7 @@ app.use(function(req,res,next){
 app.use('/', index);
 app.use('/users', users);
 app.use('/tasks', task);
-
+app.use('/alltasks',alltasks)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
