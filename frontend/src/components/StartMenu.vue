@@ -1,7 +1,8 @@
 <template>
   <v-layout>
     <v-flex class="startmenü-display">
-      <task-loader class="startmenü-display" :getReq="getReq"/>
+      <br id="top">
+      <task-loader class="startmenü-display" :getReq="getReq" id="top"/>
       <br>
       <p id="scroll">
         "But I must explain to you how all this mistaken idea of denouncing pleasur
@@ -19,8 +20,8 @@
       </p>
       <list-setting  class="startmenü-display"/>
       <profil id="profil"/>
+      <v-btn v-on:click="scrollTop()">Scroll up</v-btn>
       <div id="voidScroll"></div>
-      <v-btn v-on:click="toggle()">asasdasdas</v-btn>
     </v-flex>
 
   </v-layout>
@@ -67,6 +68,11 @@
           // card.visible = !card.visible
           console.log('HALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLO')
           console.log(this.getReq)
+        },
+        scrollTop: function () {
+          window.scrollTo(0, 0)
+          console.log('OK')
+          // this.$store.commit('scroll', id)
         }
       },
       // mounted: {

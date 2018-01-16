@@ -86,6 +86,7 @@
     text-align: left;
     padding-left: 10vh;
     padding-top: 2vh;
+    /*width: 100%;*/
   }
 
   #terminalInput {

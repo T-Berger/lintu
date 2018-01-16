@@ -1,7 +1,53 @@
 <template>
-  <v-tabs id="header" dark>
-    <v-tabs-bar class="black" dark>
-      <v-tabs-slider class="grey darken-3w"></v-tabs-slider>
+  <div>
+
+    <!--<mobile-navbar class="mobileNavbar hidden-lg-and-up"/>-->
+
+    <v-tabs id="header" dark class ="hidden-md-and-down">
+      <v-tabs-bar class="black" dark>
+          <v-tabs-item>
+            <mobile-navbar class="mobileNavbar hidden-lg-and-up"/>
+          </v-tabs-item>
+          <v-tabs-slider class="grey darken-3w"></v-tabs-slider>
+
+          <v-tabs-item v-if="this.$store.state.task[0].aufgabennummer == 1" class="v-tabs-item" id="firstTab"
+                       disabled >
+            <v-icon large dark>mdi-arrow-left-bold</v-icon>
+          </v-tabs-item>
+
+          <v-tabs-item v-else class="v-tabs-item" id="firstTab"
+          v-on:click="loadTask(back)" >
+            <v-icon large dark>mdi-arrow-left-bold</v-icon>
+          </v-tabs-item>
+        <v-spacer></v-spacer>
+          <v-tabs-item centered class="v-tabs-item">
+             <span class="dimgrey--text">{{
+               this.$store.state.task[0].aufgabennummer +
+               ".  " +
+               this.$store.state.task[0].aufgabentitel
+               }}</span>
+          </v-tabs-item>
+        <v-spacer></v-spacer>
+
+          <v-tabs-item v-if="this.$store.state.task[0].aufgabennummer === this.$store.state.aufgabenanzahl"
+                       class="v-tabs-item" disabled>
+            <v-icon large dark>mdi-arrow-right-bold</v-icon>
+          </v-tabs-item>
+
+          <v-tabs-item v-else class="v-tabs-item"
+          v-on:click="loadTask(forward)">
+            <v-icon large dark>mdi-arrow-right-bold</v-icon>
+          </v-tabs-item>
+      </v-tabs-bar>
+    </v-tabs>
+
+
+    <v-tabs dark class="hidden-lg-and-up" id="mobileHeader">
+      <v-tabs-bar class="black" dark id="mobileTabBar">
+        <v-tabs-item>
+          <mobile-navbar class="mobileNavbar hidden-lg-and-up"/>
+        </v-tabs-item>
+        <v-tabs-slider class="grey darken-3w"></v-tabs-slider>
 
         <v-tabs-item v-if="this.$store.state.task[0].aufgabennummer == 1" class="v-tabs-item" id="firstTab"
                      disabled >
@@ -9,18 +55,18 @@
         </v-tabs-item>
 
         <v-tabs-item v-else class="v-tabs-item" id="firstTab"
-        v-on:click="loadTask(back)" >
+                     v-on:click="loadTask(back)" >
           <v-icon large dark>mdi-arrow-left-bold</v-icon>
         </v-tabs-item>
-      <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
         <v-tabs-item centered class="v-tabs-item">
-           <span class="dimgrey--text">{{
-             this.$store.state.task[0].aufgabennummer +
-             ".  " +
-             this.$store.state.task[0].aufgabentitel
-             }}</span>
+             <span class="dimgrey--text">{{
+               this.$store.state.task[0].aufgabennummer +
+               ".  " +
+               this.$store.state.task[0].aufgabentitel
+               }}</span>
         </v-tabs-item>
-      <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
 
         <v-tabs-item v-if="this.$store.state.task[0].aufgabennummer === this.$store.state.aufgabenanzahl"
                      class="v-tabs-item" disabled>
@@ -28,15 +74,21 @@
         </v-tabs-item>
 
         <v-tabs-item v-else class="v-tabs-item"
-        v-on:click="loadTask(forward)">
+                     v-on:click="loadTask(forward)">
           <v-icon large dark>mdi-arrow-right-bold</v-icon>
         </v-tabs-item>
-    </v-tabs-bar>
-  </v-tabs>
+      </v-tabs-bar>
+    </v-tabs>
+
+  </div>
 </template>
 
 <script>
+  import MobileNavbar from './mobile-components/MobileNavbar.vue'
   export default {
+    components: {
+      MobileNavbar
+    },
     props: ['task', 'getReq'],
     data () {
       return {
@@ -96,6 +148,14 @@
   #header{
     position: fixed;
     top: 0;
+  }
+  #mobileHeader{
+    height: 8vh;
+    position: fixed;
+    top: 0;
+  }
+  #mobileTabBar{
+    height: 6vh;
   }
   .theme--dark{
     color:  dimgrey !important;

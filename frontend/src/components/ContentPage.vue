@@ -1,14 +1,24 @@
 <template>
-  <div id="display">
-    <div id="kurs">
+  <div>
+    <div class="hidden-md-and-down" id="display">
+      <div id="kurs">
+        <!--Aufgabenbeschreibung-->
+        <task class="hidden-md-and-down"
+              v-bind:class="[this.$store.state.contentPageSpacingVerticallyNotTriggered ? true : verticalStyle, horizontalStyle]"/>
+
+
+        <!--Terminal-->
+        <terminal class="hidden-md-and-down"
+          v-bind:class="[this.$store.state.contentPageSpacingVerticallyNotTriggered ? true : verticalStyle, horizontalStyle]"/>
+      </div>
+    </div>
+    <div id="mobileDisplay" class="hidden-lg-and-up">
       <!--Aufgabenbeschreibung-->
-      <task
-            v-bind:class="[this.$store.state.contentPageSpacingVerticallyNotTriggered ? true : verticalStyle, horizontalStyle]"/>
+      <task class="hidden-lg-and-up mobileSpacing" />
       <!--Terminal-->
-      <terminal v-bind:class="[this.$store.state.contentPageSpacingVerticallyNotTriggered ? true : verticalStyle, horizontalStyle]"/>
+      <terminal class="hidden-lg-and-up mobileSpacing"/>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -31,7 +41,7 @@
 
 <style scoped>
   #display{
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     width: calc(100vw - var(--breiteNavbar-));
     height: calc(100vh - var(--laengeHeader-));
     position: fixed;
@@ -46,6 +56,19 @@
     background-color: yellow;
     height: calc((100vh - var(--laengeHeader-))/2);
     width: calc(100vw - var(--breiteNavbar-));
+  }
+  .mobileSpacing {
+    height: calc((100vh - var(--laengeHeader-))/2);
+    width: 100%;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    background-color: red;
+  }
+  #mobileDisplay {
+    margin-top: 10px;
+    height: calc(100vh - var(--laengeHeader-));
+    position: fixed;
+    overflow: hidden;
   }
 
 

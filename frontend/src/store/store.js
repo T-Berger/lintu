@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
     startMenuButton: false,
     startMenuMounted: false,
     contentPageSpacingVerticallyNotTriggered: true,
-    task: {aufgabennummer: '1.0', aufgabentitel: 'BeispielHallo', aufgabe: 'BALALALALALALALALALALALALA'},
+    task: [{aufgabennummer: '1.0', aufgabentitel: 'BeispielHallo', aufgabe: 'BALALALALALALALALALALALALA'}],
     aufgabenanzahl: 4,
     currentTaskID: 1
   // },

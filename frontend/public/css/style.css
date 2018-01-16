@@ -31,8 +31,12 @@ header{
     overflow: auto;
 }
 #display {
-    margin-top: 5vw;
-    margin-left:5vw;
+    /*margin-top: 5vw;*/
+  /*margin-top: calc(var(--breiteNavbar-)+ 50px);*/
+  border: none;
+  background-color: blue;
+  right: 0px;
+    /*margin-left:5vw;*/
     /*z-index: -1;*/
 }/*
 #terminalInput {

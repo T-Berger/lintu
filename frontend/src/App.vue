@@ -2,12 +2,10 @@
   <div id="app">
     <v-app>
       <main>
-        <nav-bar/>
+        <nav-bar class="hidden-md-and-down"/>
         <page-header :task="task" :getReq="getReq"/>
         <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>
-
           <router-view></router-view>
-
       </main>
     </v-app>
   </div>
@@ -70,7 +68,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    margin-top: var(--breiteNavbar-);
   }
   #startmenü{
     position: absolute;

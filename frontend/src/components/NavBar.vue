@@ -1,69 +1,78 @@
 <template dark class="pa-0">
   <!--Navbar-->
-  <v-navigation-drawer permanent dark id="navbar">
-    <!--Icon Startmenü-->
-    <button id="startmenü-icon" v-on:click="switchStartButton()">
-      <i class="fab fa-linux"></i>
-    </button>
+  <div>
+    <v-navigation-drawer permanent dark id="navbar" class="hidden-md-and-down">
+      <!--Icon Startmenü-->
+      <button id="startmenü-icon" v-on:click="switchStartButton()">
+        <i class="fab fa-linux"></i>
+      </button>
 
 
-    <!--Navbar-icons-->
-    <ul id="ul-navbar">
-      <div v-for="(item,index) in items" :key="item.icon">
+      <!--Navbar-icons-->
+      <ul id="ul-navbar">
+        <div v-for="(item,index) in items" :key="item.icon">
+          <li>
+            <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
+              <a class="list-item" v-on:click="scrollMenu(item.jumpId)"  slot="activator">
+                <v-icon dark>{{item.icon}}</v-icon>
+              </a>
+              <span>{{item.tooltip}}</span>
+            </v-tooltip>
+            <v-tooltip right v-else="" v-model="form._id[index]">
+              <a class="list-item" v-on:click="scrollMenu(item.jumpId)"  slot="activator">
+                <v-icon dark>{{item.icon}}</v-icon>
+              </a>
+              <span>{{item.tooltip}}</span>
+            </v-tooltip>
+          </li>
+        </div>
         <li>
-          <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
-            <a class="list-item" v-on:click="scrollMenu(item.jumpId)"  slot="activator">
-              <v-icon dark>{{item.icon}}</v-icon>
-            </a>
-            <span>{{item.tooltip}}</span>
-          </v-tooltip>
-          <v-tooltip right v-else="" v-model="form._id[index]">
-            <a class="list-item" v-on:click="scrollMenu(item.jumpId)"  slot="activator">
-              <v-icon dark>{{item.icon}}</v-icon>
-            </a>
-            <span>{{item.tooltip}}</span>
-          </v-tooltip>
+          <!--<v-tooltip right v-model="toogletooltip">-->
+          <!--<button class="list-button" v-on:click="toogle()" slot="activator">-->
+          <!--<v-icon dark>fa-info-circle</v-icon>-->
+          <!--</button>-->
+          <!--<span>Toogle Tooltip</span>-->
+          <!--</v-tooltip>-->
+          <!--</li>-->
+
+        <li>
+          <button class="list-button" v-on:click="toogle()">
+            <v-icon dark>fa-info-circle</v-icon>
+          </button>
         </li>
-      </div>
-      <li>
-        <!--<v-tooltip right v-model="toogletooltip">-->
-        <!--<button class="list-button" v-on:click="toogle()" slot="activator">-->
-        <!--<v-icon dark>fa-info-circle</v-icon>-->
-        <!--</button>-->
-        <!--<span>Toogle Tooltip</span>-->
-        <!--</v-tooltip>-->
-        <!--</li>-->
 
-      <li>
-        <button class="list-button" v-on:click="toogle()">
-          <v-icon dark>fa-info-circle</v-icon>
-        </button>
-      </li>
+        <li>
+          <a id="arrowcrosslist" class="list-item" href="#" v-on:click="switchContentPageSpacing()">
+            <img src="../assets/Arrow_Cross.svg" alt="||-||">
+          </a>
+        </li>
 
-      <li>
-        <a id="arrowcrosslist" class="list-item" href="#" v-on:click="switchContentPageSpacing()">
-          <img src="../assets/Arrow_Cross.svg" alt="||-||">
-        </a>
-      </li>
+        <li>
+          {{toogletooltip}}
+        </li>
 
-      <li>
-        {{toogletooltip}}
-      </li>
+        <li id="powerbutton">
+          <a class="list-item" href="">
+            <i class="fas fa-power-off"></i>
+          </a>
+        </li>
+      </ul>
+    </v-navigation-drawer>
 
-      <li id="powerbutton">
-        <a class="list-item" href="">
-          <i class="fas fa-power-off"></i>
-        </a>
-      </li>
-    </ul>
+    <!--<div class="mobileNavbar hidden-lg-and-up">-->
+      <!--<mobile-navbar/>-->
+    <!--</div>-->
+  </div>
 
-
-  </v-navigation-drawer>
 
 </template>
 <script>
+  // import MobileNavbar from './mobile-components/MobileNavbar.vue'
   export default {
     name: 'nav-bar',
+    // components: {
+    //   MobileNavbar
+    // },
     data () {
       return {
         props: ['addStatusClass'],

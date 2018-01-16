@@ -1,7 +1,7 @@
 <template>
   <v-card class="startmenü-display">
     <v-container fluid>
-      <v-layout row wrap class="startmenü-display mb-4 pb-2">
+      <v-layout row wrap class="startmenü-display mb-4 pb-2 hidden-md-and-down">
         <v-flex
           xs3
           v-for="(card, index) in getReq"
@@ -48,10 +48,17 @@
                 </v-btn-toggle>
               </v-card-actions>
             </v-layout>
+            <!--<v-layout >-->
+              <!--<mobile-task-loader :cards="cards"/>-->
+                <!--v-for="card in cards" :key="card.id"-->
+                                  <!--:card-desc="card.title"-->
+                                  <!--:card-diff="card.difficulty"-->
+
+            <!--</v-layout>-->
           </v-card>
         </v-flex>
       </v-layout>
-      <v-btn-toggle dark id="buttonbar" class="mt-6">
+      <v-btn-toggle dark id="buttonbar" class="mt-6 hidden-md-and-down">
         <v-btn dark class="text-xs-right" value="Expand all" color="black" v-on:click="expandAllCards()">
           <span>Expand all</span>
           <v-icon >mdi-arrow-expand-all</v-icon>
@@ -61,18 +68,29 @@
           <v-icon >mdi-arrow-collapse-all</v-icon>
         </v-btn>
       </v-btn-toggle>
+      <mobile-task-loader :cards="this.cardstest" class="hidden-lg-and-up"/>
     </v-container>
   </v-card>
 </template>
 
 <script>
+  import MobileTaskLoader from '../mobile-components/MobileTaskLoader.vue'
   export default {
     name: 'task-loader',
+    components: {
+      MobileTaskLoader
+    },
     props: [
       'getReq'
     ],
     data () {
       return {
+        cardstest: [
+          {name: 'MacBook Air', id: 1, visible: false, difficulty: 10},
+          {name: 'MacBook Pro', id: 2, visible: false, difficulty: 40},
+          {name: 'Lenovo W530', id: 3, visible: false, difficulty: 80},
+          {name: 'Acer Aspire One', id: 4, visible: false, difficulty: 100}
+        ],
         cards: [
           {name: 'MacBook Air', id: 1, visible: false, difficulty: 10},
           {name: 'MacBook Pro', id: 2, visible: false, difficulty: 40},
