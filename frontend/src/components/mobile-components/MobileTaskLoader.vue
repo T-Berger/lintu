@@ -3,7 +3,7 @@
     <template>
       <v-subheader >Hier sind die verfügbaren Aufgaben</v-subheader>
       <v-divider></v-divider>
-      <v-list-tile avatar v-bind:key="card.name" @click="" v-for="(card, index) in cards"
+      <v-list-tile avatar v-bind:key="card.name" @click="loadTask(card)" v-for="(card, index) in getReq"
                    :key="card.id">
         <v-list-tile-avatar>
           <v-icon x-large v-on:Click="" v-bind:style="{ color: colorIcon(card.difficulty)}">
@@ -33,7 +33,7 @@
       //     default: '5'
       //   }
       // },
-      props: ['cards'],
+      props: ['getReq'],
       //   {
       //     // getReq: 'getReq',
       //   // cards: 'cards'
@@ -54,10 +54,22 @@
           } else {
             return 'red'
           }
+        },
+        loadTask: async function (card) {
+          console.log(card)
+          console.log('get')
+          console.log(card.id)
+          console.log(this.$store.state.task)
+          this.$store.dispatch('storeNewTaskFromServer', card.id)
+          console.log('response')
+          console.log('Set loading off')
+          // this.loader = null
         }
+
       },
       mounted: function () {
         console.log('Mobile-Darstellung-Switch')
+        console.log(this.getReq)
         // console.log(this.props.cards)
         // this.cardslocal = this.cards
         // console.log(this.cardslocal)

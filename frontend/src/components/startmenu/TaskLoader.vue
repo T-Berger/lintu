@@ -68,7 +68,7 @@
           <v-icon >mdi-arrow-collapse-all</v-icon>
         </v-btn>
       </v-btn-toggle>
-      <mobile-task-loader :cards="this.cardstest" class="hidden-lg-and-up"/>
+      <mobile-task-loader :getReq="getReq" class="hidden-lg-and-up"/>
     </v-container>
   </v-card>
 </template>
