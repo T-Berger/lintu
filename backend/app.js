@@ -90,7 +90,7 @@ io.on('connection', function(socket) {
     child.stdout.on('data', (data) => {
         console.log(`child stdout:\n${data}`);
         // io.to(socket).emit('stdout', data); //GEHT NICHT EMIT NICHT
-        console.log(data)
+        // console.log(data)
         // spaeter nur noch auslagern
 
         // ascii Buffer array to Sting
@@ -101,7 +101,7 @@ io.on('connection', function(socket) {
         console.log('Ascii')
         // var asc = new TextEncoder("ascii");
         var encodedString = decoder.decode(data);
-        console.log("Sende das hier >" + encodedString + " <" )
+        // console.log("Sende das hier >" + encodedString + " <" )
         // console.log(encoder.decode(data));
 
         io.emit('stdout', encodedString)
@@ -110,7 +110,7 @@ io.on('connection', function(socket) {
     child.stderr.on('data', (data) => {
         console.log(`child stdout:\n${data}`);
         var encodedString = decoder.decode(data);
-        console.log("Sende das hier >" + encodedString + " <" );
+        // log("Sende das hier >" + encodedString + " <" );
         io.emit('stdout', encodedString);
     });
 
