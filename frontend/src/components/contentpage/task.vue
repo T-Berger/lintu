@@ -1,18 +1,15 @@
 <template>
-
   <div id="editor">
-    <div v-html="compiledMarkdown">
+    <div v-html="compiledMarkdown" id="taskContent">
     </div>
-    <v-btn block v-on:click="showSolution = !showSolution" v-if="showSolution">Lösung verstecken</v-btn>
-    <v-btn v-else block v-on:click="showSolution = !showSolution">Lösung anzeigen</v-btn>
+    <v-btn v-on:click="showSolution = !showSolution" v-if="showSolution" color="primary">Lösung verstecken</v-btn>
+    <v-btn v-else v-on:click="showSolution = !showSolution" color="primary">Lösung anzeigen</v-btn>
     <div v-if="showSolution == true" v-html="compiledMarkdownSolution">
     </div>
   </div>
 </template>
 
 <script>
- // <!--<script src="https://unpkg.com/marked@0.3.6">
-// <!--<script src="https://unpkg.com/lodash@4.16.0"
     import marked from 'marked'
     import _ from 'lodash'
     export default {
@@ -47,17 +44,31 @@
 
 <style scoped>
   html, body, #editor {
-    /*background-color: whitesmoke;*/
+    background-color: whitesmoke;
     /*margin: 0;*/
     /*height: 40vh;*/
     /*width: 200vh;*/
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: #333;
     overflow: scroll;
     overflow-x: hidden;
     float:left;
   }
+  /*
+    SCROLLBAR
+*/
+  div::-webkit-scrollbar {
+    width: 0.45em;
+    background-color: white;
+  }
 
+  div::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+
+  div::-webkit-scrollbar-thumb {
+    background-color: black;
+    outline: 1px solid slategrey;
+  }
   /*textarea, #editor div {*/
     /*display: inline-block;*/
     /*width: 49%;*/
@@ -81,4 +92,5 @@
   /*code {*/
     /*color: #f66;*/
   /*}*/
+
 </style>

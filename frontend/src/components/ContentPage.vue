@@ -5,13 +5,13 @@
         <!--Aufgabenbeschreibung-->
         <task class="hidden-md-and-down"
               v-bind:class="[this.$store.state.contentPageSpacingVerticallyNotTriggered ? true : verticalStyle, horizontalStyle]"/>
-
-
         <!--Terminal-->
         <terminal class="hidden-md-and-down"
           v-bind:class="[this.$store.state.contentPageSpacingVerticallyNotTriggered ? true : verticalStyle, horizontalStyle]"/>
       </div>
     </div>
+
+    <!--Mobile Seite-->
     <div id="mobileDisplay" class="hidden-lg-and-up">
       <!--Aufgabenbeschreibung-->
       <task class="hidden-lg-and-up mobileSpacing" />

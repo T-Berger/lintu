@@ -2,7 +2,7 @@
   <v-layout>
     <v-flex class="startmenü-display">
       <br id="top">
-      <task-loader class="startmenü-display" :getReq="getReq" id="top"/>
+      <task-loader class="startmenü-display" :getReq="getReq"/>
       <br>
       <p id="scroll">
         "But I must explain to you how all this mistaken idea of denouncing pleasur

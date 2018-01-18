@@ -17,54 +17,73 @@ header{
     left: 5vw;
     top: 0;
     border-bottom: 1px solid black;
-
-}
-#navbar {
-    background-color: black;
-    width: var(--breiteNavbar-);
-    position: fixed;
-    left: 0px;
-    top: 0;
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    overflow: auto;
 }
 #display {
     /*margin-top: 5vw;*/
   /*margin-top: calc(var(--breiteNavbar-)+ 50px);*/
   border: none;
-  background-color: blue;
+  background-color: black;
   right: 0px;
     /*margin-left:5vw;*/
     /*z-index: -1;*/
-}/*
-#terminalInput {
-    background-color: var(--colorTerminal-);
-    color: var(--fontcolorTerminal-);
-    height: auto;
-    display: inline;
-    position: relative;
-    font-size: 14.3px;
-    font-family: Arial;
-    font-style: normal;
-    font-variant-ligatures: normal;
-    font-variant-caps: normal;
-    font-variant-numeric: normal;
-    font-weight: normal;
-    font-stretch: normal;
-    line-height: normal;
-
-}*//*
-#terminalInput label{
-    vertical-align: top;
-    overflow: auto;
-    width: var(--laengeUsername-);
+}
+/*Navbar*/
+    /*Startmenü-ICON*/
+    #startmenü-icon {
+        text-align: center;
+        vertical-align: middle;
+        height: var(--laengeHeader-);
+        width: var(--breiteNavbar-);
+        border-left: none;
+        font-size: 3em;
+    }
+    #startmenü-icon:focus {outline:0;}
+    #startmenü-icon:active{
+      color:white;
+      background-color: #303030;
+      outline: none;
+    }
+    /*Navbar*/
+    #powerbutton{
+      position: fixed;
+      bottom: 0px;
+      border-top: 2px double grey;
+      text-align: center;
+      /*    height: 2.5em;
+          width: 4em;*/
+      height: 5vw;
+      width: var(--breiteNavbar-);
+      vertical-align: middle;
+    }
+/*BUTTONACTIVE change to startmenü*/
+#kurs{
     position: absolute;
+}
+/*STARTMENÜ*/
+#startmenü-display{
+    position: relative;
+    color:white;
+}
 
-}*/
+/*
+    SCROLLBAR
+*/
+body::-webkit-scrollbar {
+  width: 0.45em;
+  background-color: lightgrey;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: dimgrey;
+  outline: 1px solid slategrey;
+}
+/*
+ *****DEPRECATED****
 #input {
-
     color: var(--fontcolorTerminal-);
     background-color: var(--colorTerminal-);
     align-self: baseline;
@@ -85,99 +104,5 @@ header{
     font-stretch: normal;
     line-height: normal;
 }
-
-    /*   -webkit-appearance: none;
-
-   /*  position: relative;
-        left: auto;
-    */
-/*HEADERNAVBAR*/
-/*header > div {
-    position: fixed;
-
-    width: 100%;
-    height: var(--laengeHeader-);
-    background-color: black;
-    text-align: center;
-
-}
-#headerbar{
-    list-style-type: none;
-    overflow: hidden;
-    text-align: center;
-    margin: 0;
-    margin-left:36%;
-    padding: 2px;
-    font-size: 15pt;
-}
-#headerbar li {
-    float: left;
-}*/
-
-/*Startmenü*/
-#startmenü-icon {
-    text-align: center;
-    vertical-align: middle;
-    height: var(--laengeHeader-);
-    width: var(--breiteNavbar-);
-    border-left: none;
-    font-size: 3em;
-}
-#startmenü-icon:focus {outline:0;}
-    /*Navbar*/
-#ul-navbar {
-
-    padding-left: 0px;
-    list-style-type: none;
-    border-right: 2px solid black;
-}
-    /*LIST ITEMS-NAVBAR*/
-
-
-
-
-
-/*TODO*/
-/*BUTTONACTIVE change to startmenü*/
-
-
-
-#kurs{
-    position: absolute;
-
-}
-/*STARTMENÜ*/
-#startmenü-display{
-    position: relative;
-    color:white;
-}
-#powerbutton{
-    position: fixed;
-    bottom: 0px;
-    border-top: 2px double grey;
-    text-align: center;
-    /*    height: 2.5em;
-        width: 4em;*/
-    height: 5vw;
-    width: var(--breiteNavbar-);
-    vertical-align: middle;}
-
-/*
-    SCROLLBAR
 */
-body::-webkit-scrollbar {
-  width: 0.45em;
-  background-color: lightgrey;
-}
-
-body::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: dimgrey;
-  outline: 1px solid slategrey;
-}
-
-
 

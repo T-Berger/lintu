@@ -6,8 +6,6 @@
       <button id="startmenü-icon" v-on:click="switchStartButton()">
         <i class="fab fa-linux"></i>
       </button>
-
-
       <!--Navbar-icons-->
       <ul id="ul-navbar">
         <div v-for="(item,index) in items" :key="item.icon">
@@ -46,11 +44,6 @@
             <img src="../assets/Arrow_Cross.svg" alt="||-||">
           </a>
         </li>
-
-        <li>
-          {{toogletooltip}}
-        </li>
-
         <li id="powerbutton">
           <a class="list-item" href="">
             <i class="fas fa-power-off"></i>
@@ -58,10 +51,6 @@
         </li>
       </ul>
     </v-navigation-drawer>
-
-    <!--<div class="mobileNavbar hidden-lg-and-up">-->
-      <!--<mobile-navbar/>-->
-    <!--</div>-->
   </div>
 
 
@@ -117,16 +106,6 @@
   .application .theme--dark.navigation-drawer a:not(.list__tile--active) {
     color: #575757 !important;
   }
-  /*Startmenü*/
-  #startmenü-icon {
-    text-align: center;
-    vertical-align: middle;
-    height: var(--laengeHeader-);
-    width: var(--breiteNavbar-);
-    border-left: none;
-    font-size: 3em;
-  }
-  #startmenü-icon:focus {outline:0;}
   /*LIST ITEMS-NAVBAR*/
   .list-item {
     background: #000;
@@ -198,28 +177,14 @@
     bottom: 0px;
     width: var(--breiteNavbar-);
   }
-  #startmenü-icon:active{
-    color:white;
-    background-color: #303030;
-  }
   button{
     background-color: buttonface;
     color: black;
-
-
   }
   button.selected{
     color:white !important;
     background-color: #303030 !important;
   }
-
-  #startmenü-icon:active{
-    color:white;
-    background-color: #303030;
-    outline: none;
-  }
-
-
   #navbar {
     background-color: black;
     width: var(--breiteNavbar-) !important;
@@ -231,5 +196,9 @@
     margin: 0px;
     overflow: auto;
   }
-
+  #ul-navbar {
+    padding-left: 0px;
+    list-style-type: none;
+    border-right: 2px solid black;
+  }
 </style>

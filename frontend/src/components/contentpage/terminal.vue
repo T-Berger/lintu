@@ -2,10 +2,9 @@
   <!--Terminal-->
   <div id= "terminal">
     <div v-for='(history, index) in historyinput'>
-      <span> hallo ---> </span>
       <span>{{ historyinput[index]}}</span>
     </div>
-    <label for = terminalInput>hallo ----></label>
+    <label for = terminalInput></label>
     <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()"
            v-on:keyup.up="moveHistoryUp()" v-on:keyup.down="moveHistoryDown()"
            v-on:keydown.delete.prevent="notDeletableLabel()">
@@ -98,5 +97,20 @@
     outline: none;
     font-family: 'Ubuntu Mono', monospace;
   }
+  /*
+      SCROLLBAR
+  */
+  div::-webkit-scrollbar {
+    width: 0.45em;
+    background-color: white;
+  }
 
+  div::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+
+  div::-webkit-scrollbar-thumb {
+    background-color: black;
+    outline: 1px solid slategrey;
+  }
 </style>

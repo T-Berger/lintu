@@ -14,14 +14,12 @@
 <script>
   import PageHeader from '@/components/Header.vue'
   import NavBar from './components/NavBar'
-  import Aufgaben from './components/Aufgaben'
   // import TasksService from '@/services/TasksService'
   import StartMenu from '@/components/StartMenu'
   import AllTasksService from './services/AllTasksService'
   export default {
     name: 'app',
     components: {
-      Aufgaben,
       NavBar,
       PageHeader,
       StartMenu
