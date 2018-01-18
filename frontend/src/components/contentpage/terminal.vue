@@ -1,11 +1,13 @@
 <template>
   <!--Terminal-->
   <div id= "terminal">
-    <div v-for='(history, index) in historyinput'>
-      <span> hallo ---> </span>
-      <span>{{ historyinput[index]}}</span>
+    <!--<div v-for='(history, index) in historyinput'>-->
+      <!--<span>{{ historyinput[index]}}</span>-->
+    <!--</div>-->
+    <div v-for='(outputline, index) in output'>
+      <span>{{ output[index]}}</span>
     </div>
-    <label for = terminalInput>hallo ----></label>
+    <label for = terminalInput></label>
     <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()"
            v-on:keyup.up="moveHistoryUp()" v-on:keyup.down="moveHistoryDown()"
            v-on:keydown.delete.prevent="notDeletableLabel()">
@@ -13,61 +15,83 @@
 </template>
 
 <script>
-    export default {
-      name: 'terminal',
-      data () {
-        return {
-          historyinput: [],
-          input: 'USERNAME ',
-          inputLabel: 'USERNAME ',
-          counter: 0
-        }
-      },
-      methods: {
-        saveString () {
-          console.log(this.input)
-          this.historyinput.push(this.input)
-          this.input = this.inputLabel
-          console.log(this.inputLabel)
-          this.counter = this.historyinput.length
-        },
-        notDeletableLabel () {
-          var inputDeletable = this.input.substr(this.input.length - (this.input.length - this.inputLabel.length))
-          console.log(inputDeletable)
-          console.log(this.inputLabel)
-          console.log(this.inputLabel.concat(inputDeletable))
-          this.input = this.inputLabel.concat(inputDeletable)
-          console.log(this.input)
-          this.input = this.input.slice(0, (this.input.length - 1))
-          console.log(this.input)
-        },
-        moveHistoryDown () {
-          this.counter++
-          if (this.counter > this.historyinput.length | this.counter === this.historyinput.length) {
-            this.counter--
-            this.input = 'USERNAME '
-            console.log(this.counter)
-          } else {
-            this.input = this.historyinput[this.counter]
-            console.log(this.counter)
-          }
-        },
-        moveHistoryUp () {
-          this.counter--
-          if (this.counter < 0) {
-            this.counter++
-            this.input = this.historyinput[this.counter]
-            console.log(this.counter)
-            if (this.historyinput.length === 0) {
-              this.input = this.inputLabel
-            }
-          } else {
-            this.input = this.historyinput[this.counter]
-            console.log(this.counter)
-          }
-        }
-      }
-    }
+   export default {
+     name: 'terminal',
+     data () {
+       return {
+         historyinput: [],
+         output: [],
+         input: 'USERNAME ',
+         inputLabel: 'USERNAME ',
+         counter: 0
+         // socket: io()
+       }
+     },
+     sockets: {
+       connect: function () {
+         console.log('socket connected')
+       },
+       disconnect: function () {
+         console.log('socket disconnected')
+       },
+       stdout: function (val) {
+         console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+         console.log(val)
+         this.output.push(val)
+       }
+     },
+     methods: {
+       saveString () {
+         var input = this.input.substr(this.input.length - (this.input.length - this.inputLabel.length))
+         var inputPlusNewline = input + '\n'
+         console.log('input + newline ' + inputPlusNewline)
+         // this.$socket.emit('stdin', input)
+         this.$socket.emit('stdin', inputPlusNewline)
+         console.log(this.input)
+         this.historyinput.push(this.input)
+         this.output.push(this.input)
+         this.input = this.inputLabel
+         console.log(this.inputLabel)
+         this.counter = this.historyinput.length
+         // this.$socket.emit('stdin', this.input)
+       },
+       notDeletableLabel () {
+         var inputDeletable = this.input.substr(this.input.length - (this.input.length - this.inputLabel.length))
+         // console.log(inputDeletable)
+         // console.log(this.inputLabel)
+         // console.log(this.inputLabel.concat(inputDeletable))
+         this.input = this.inputLabel.concat(inputDeletable)
+         console.log(this.input)
+         this.input = this.input.slice(0, (this.input.length - 1))
+         console.log(this.input)
+       },
+       moveHistoryDown () {
+         this.counter++
+         if (this.counter > this.historyinput.length | this.counter === this.historyinput.length) {
+           this.counter--
+           this.input = 'USERNAME '
+           console.log(this.counter)
+         } else {
+           this.input = this.historyinput[this.counter]
+           console.log(this.counter)
+         }
+       },
+       moveHistoryUp () {
+         this.counter--
+         if (this.counter < 0) {
+           this.counter++
+           this.input = this.historyinput[this.counter]
+           console.log(this.counter)
+           if (this.historyinput.length === 0) {
+             this.input = this.inputLabel
+           }
+         } else {
+           this.input = this.historyinput[this.counter]
+           console.log(this.counter)
+         }
+       }
+     }
+   }
 </script>
 
 <style scoped>
