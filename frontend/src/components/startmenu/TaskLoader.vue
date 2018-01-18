@@ -117,12 +117,12 @@
         // console.log(this.cards)
         for (var card in this.getReq) {
           // console.log(this.cards[card].name)
-          this.cards[card].visible = true
+          this.getReq[card].visible = true
         }
       },
       collapseAllCards () {
         for (var card in this.getReq) {
-          this.cards[card].visible = false
+          this.getReq[card].visible = false
         }
       },
       colorIcon: function (difficulty) {
