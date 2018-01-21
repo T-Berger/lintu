@@ -49,7 +49,7 @@
   }
   .verticalStyle {
     /*position: relative;*/
-    width: calc((100vw - var(--breiteNavbar-) - 10px)/2) !important;
+    width: calc((100vw - var(--breiteNavbar-))/2) !important;
     height: calc(100vh - var(--laengeHeader-)) !important;
   }
   .horizontalStyle {
