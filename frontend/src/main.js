@@ -6,7 +6,6 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import { store } from './store/store'
-import VueResource from 'vue-resource' // braucht man wahrscheinlich nicht
 import VueSocketIO from 'vue-socket.io'
 
 Vue.config.productionTip = false
