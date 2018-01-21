@@ -12,7 +12,6 @@ import VueSocketIO from 'vue-socket.io'
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
-Vue.use(VueResource)
 Vue.use(VueSocketIO, 'http://localhost:3001')
 // Vue.use(VueSocketIO, 'http://localhost.com:3001')
 /* eslint-disable no-new */
