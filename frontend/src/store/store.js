@@ -37,11 +37,24 @@ export const store = new Vuex.Store({
       state.startMenuButton = !state.startMenuButton
     },
     switchContentPageSpacing: state => {
+      if ($('#arrowcrosslist').hasClass('selected')) {
+        $('#arrowcrosslist').removeClass('selected')
+        $('#arrowcrosslist img').css('filter', 'invert(35%)')
+        $('#arrowcrosslist').css('background-color', 'black')
+        $('#arrowcrosslist').css('border-right', 'none')
+      } else {
+        $('#arrowcrosslist').addClass('selected')
+        $('#arrowcrosslist').css('background-color', 'grey')
+        $('#arrowcrosslist img').css('filter', 'invert(0%)')
+        $('#arrowcrosslist').css('border-right', '3px solid black')
+      }
+      console.log('switch')
       state.contentPageSpacingVerticallyNotTriggered = !state.contentPageSpacingVerticallyNotTriggered
     },
     switchStartMenuButtonOnTrue: state => {
       state.startMenuButton = true
       $('#startmenü-icon').addClass('selected')
+      console.log('HALLO SELECTED?')
       // STARTMENÜ LADEN
       $('#headerbar').hide()
       $('.list-item > img').hide()

@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <v-app>
-      <main>
-        <nav-bar class="hidden-md-and-down"/>
+     <main v-if="this.$store.state.userLogedIn == true">
+	<nav-bar class="hidden-md-and-down"/>
         <page-header :task="task" :getReq="getReq"/>
         <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>
-          <router-view></router-view>
-      </main>
+
+     <!--</main>-->
+     <router-view></router-view>
     </v-app>
   </div>
 </template>

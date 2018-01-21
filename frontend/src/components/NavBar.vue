@@ -96,6 +96,10 @@
           this.$store.commit('scroll', id)
         })
       }
+    },
+    mounted: function () {
+      $('#powerbutton').hide()
+      $('.list-item > img').show()
     }
   }
 </script>
