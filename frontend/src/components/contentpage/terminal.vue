@@ -1,20 +1,11 @@
 <template>
   <!--Terminal-->
   <div id= "terminal">
-<<<<<<< HEAD
-    <div v-for='(history, index) in historyinput'>
-      <span>{{ historyinput[index]}}</span>
-||||||| parent of 33d82b4... Konsole v1 mit Teilhilfe von Patrick Zielinski
-    <div v-for='(history, index) in historyinput'>
-      <span> hallo ---> </span>
-      <span>{{ historyinput[index]}}</span>
-=======
     <!--<div v-for='(history, index) in historyinput'>-->
       <!--<span>{{ historyinput[index]}}</span>-->
     <!--</div>-->
     <div v-for='(outputline, index) in output'>
       <span>{{ output[index]}}</span>
->>>>>>> 33d82b4... Konsole v1 mit Teilhilfe von Patrick Zielinski
     </div>
     <label for = terminalInput></label>
     <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()"

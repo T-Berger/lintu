@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <v-app>
-     <main v-if="this.$store.state.userLogedIn == true">
-	<nav-bar class="hidden-md-and-down"/>
-        <page-header :task="task" :getReq="getReq"/>
-        <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>
+      <!--<main v-if="this.$store.state.userLogedIn == true">-->
+      <!--<nav-bar class="hidden-md-and-down"/>-->
+      <!--<page-header :task="task" :getReq="getReq"/>-->
+      <!--<start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>-->
 
-     <!--</main>-->
-     <router-view></router-view>
+      <!--</main>-->
+      <router-view></router-view>
     </v-app>
   </div>
 </template>
@@ -48,7 +48,6 @@
       this.getReq = (await AllTasksService.init()).data
       this.$store.commit('setAufgabenanzahl', this.getReq.length)
       console.log('Die insgesamte Aufgaben sind' + this.getReq.length + '< Übergeben | im Store >' + this.$store.state.aufgabenanzahl)// },
-
       // created: function () {
       //   console.log('this.getReq')
       //   console.log(this.getReq)
