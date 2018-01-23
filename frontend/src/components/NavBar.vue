@@ -44,10 +44,11 @@
             <img src="../assets/Arrow_Cross.svg" alt="||-||">
           </a>
         </li>
-        <li id="powerbutton">
+        <li id="powerbutton"><button
+          v-on:click="logout">
           <a class="list-item" href="">
             <i class="fas fa-power-off"></i>
-          </a>
+          </a></button>
         </li>
       </ul>
     </v-navigation-drawer>
@@ -56,6 +57,7 @@
 
 </template>
 <script>
+  import firebase from 'firebase'
   // import MobileNavbar from './mobile-components/MobileNavbar.vue'
   export default {
     name: 'nav-bar',
@@ -88,6 +90,11 @@
         if (this.toogletooltip === false) {
           this.$forceUpdate()
         }
+      },
+      logout: function () {
+        firebase.auth().signOut().then(() => {
+          this.$router.replace('login')
+        })
       },
       scrollMenu: function (id) {
         this.$store.commit('switchStartMenuButtonOnTrue')

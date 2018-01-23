@@ -18,6 +18,8 @@
               </div>
               <v-btn flat color="grey">Share</v-btn>
               <v-btn flat color="grey">Explore</v-btn>
+              <v-btn flat color="grey" v-on:click="logout">Logout</v-btn>
+
           </v-container>
       </v-flex>
     </v-container>
@@ -26,6 +28,7 @@
 </template>
 
 <script>
+  import firebase from 'firebase'
   export default {
     name: 'profil',
     data () {
@@ -35,6 +38,13 @@
         // ]
         name: 'Example',
         profilPic: null
+      }
+    },
+    methods: {
+      logout: function () {
+        firebase.auth().signOut().then(() => {
+          this.$router.replace('login')
+        })
       }
     }
   }
