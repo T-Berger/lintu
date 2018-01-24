@@ -45,7 +45,6 @@
         })
       }
     },
-
     created () {
       this.user = firebase.auth().currentUser
       if (this.user) {
