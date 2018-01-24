@@ -5,7 +5,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var io = require('./node_modules/socket.io');
 var spawn = require('child_process').spawn;
 var util  = require('util');
 var sys   = require('sys');
@@ -19,7 +18,7 @@ var http  = require('http');
 
 var mongo = require("mongodb");
 var monk = require("monk");
-var db = monk('localhost:27017/lintudb');
+var db = monk('mongo/lintudb');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
