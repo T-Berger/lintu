@@ -1,60 +1,23 @@
 <template>
-  <!--<div id="app">-->
-    <v-app>
-      <!--<main v-if="this.$store.state.userLogedIn == true">-->
-      <!--<nav-bar class="hidden-md-and-down"/>-->
-      <!--<page-header :task="task" :getReq="getReq"/>-->
-      <!--<start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>-->
-
-      <!--</main>-->
-      <router-view></router-view>
-    </v-app>
-  <!--</div>-->
+  <v-app>
+    <router-view></router-view>
+  </v-app>
 </template>
 
 <script>
-  // import PageHeader from '@/components/Header.vue'
-  // import NavBar from './components/NavBar'
-  // import TasksService from '@/services/TasksService'
-  // import StartMenu from '@/components/StartMenu'
-  import AllTasksService from './services/AllTasksService'
   export default {
     name: 'app',
     components: {
-      // NavBar,
-      // PageHeader,
-      // StartMenu
     },
     data () {
       return {
-        task: 'Hallo',
-        response: {'HALOO': 'asadsad', 'aa': 'ASa'},
-        getReq: []
       }
     },
     async mounted () {
-      console.log(this.$store.state.task)
-      // console.log(this.data().responses)
-      this.$store.dispatch('storeInitFromServer')
-      console.log(this.$store.state.task)
     },
     computed: {
-      startMenuActive () {
-        return this.$store.state.startMenuButton
-      }
     },
     beforeCreate: async function () {
-      console.log('Get Request Alltasks')
-      this.getReq = (await AllTasksService.init()).data
-      this.$store.commit('setAufgabenanzahl', this.getReq.length)
-      console.log('Die insgesamte Aufgaben sind' + this.getReq.length + '< Übergeben | im Store >' + this.$store.state.aufgabenanzahl)// },
-      // created: function () {
-      //   console.log('this.getReq')
-      //   console.log(this.getReq)
-      // },
-      // beforeDestroy: function () {
-      //   console.log('startMenuDestroy')
-      //   this.$store.commit('startMenuMountedOnFalse')
     }
   }
 </script>

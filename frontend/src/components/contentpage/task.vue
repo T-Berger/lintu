@@ -37,8 +37,11 @@
         update: _.debounce(function (e) {
           this.input = e.target.value
         }, 300)
+      },
+      beforeMount: function () {
+        this.input = this.$store.state.task[0].aufgabe
+        this.solution = this.$store.state.task[0].solution
       }
-
     }
 </script>
 

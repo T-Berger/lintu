@@ -22,7 +22,6 @@ var monk = require("monk");
 var db = monk('localhost:27017/lintudb');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var task = require('./routes/task');
 var alltasks = require('./routes/alltasks');
 const TextDecoder = require("text-encoding").TextDecoder;
@@ -56,7 +55,6 @@ app.use(function(req,res,next){
 });
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/tasks', task);
 app.use('/alltasks',alltasks)
 // catch 404 and forward to error handler
@@ -78,7 +76,7 @@ app.use(function(err, req, res, next) {
 });
 
 server.listen(3001, function() {
-    console.log('Chat server booted on *:3000');
+    console.log('Socket server booted on *:3001');
 });
 
 io.on('connection', function(socket) {

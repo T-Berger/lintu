@@ -1,5 +1,5 @@
 <template>
-  <v-layout id="profil-"><!--class="ml-4 mr-4 pa-2"-->
+  <v-layout id="profil"><!--class="ml-4 mr-4 pa-2"-->
     <v-container>
       <v-flex>
           <v-container id="imageContainer">

@@ -113,7 +113,7 @@
     /*width: 100%;*/
   }
 
-  #terminalInput {
+  .terminalInput {
     background-color: black;
     border-color: black;
     height: auto;
