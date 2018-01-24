@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import TasksService from '@/services/TasksService'
+import marked from 'marked'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,16 @@ export const store = new Vuex.Store({
     contentPageSpacingVerticallyNotTriggered: true,
     task: [{aufgabennummer: '1.0', aufgabentitel: 'BeispielAufgabe', aufgabe: 'Aufgabe', solution: 'loesung'}],
     aufgabenanzahl: 4,
-    currentTaskID: 1
+    currentTaskID: 1,
+    aufgabe: '# HIER WÜRDE DIE AUFGABE STEHEN \n ## kkkk \n lllll \n sss'
+  },
+  getters: {
+    compiledMarkdown: state => {
+      return marked(state.task[0].aufgabe, {})
+    },
+    compiledMarkdownSolution: state => {
+      return marked(state.task[0].solution, {})
+    }
   },
   mutations: {
     setAufgabenanzahl: (state, anzahl) => {
@@ -22,8 +32,9 @@ export const store = new Vuex.Store({
       state.aufgabenanzahl = id
     },
     switchStartMenuButton: state => {
-      if ($('.startmenü-icon').hasClass('selected')) {
-        $('.startmenü-icon').removeClass('selected')
+      var startmenuicon = $('.startmenü-icon')
+      if (startmenuicon.hasClass('selected')) {
+        startmenuicon.removeClass('selected')
         // STARTMENÜ entfernen
         $('.list-item > img').show()
         // hide
@@ -31,7 +42,7 @@ export const store = new Vuex.Store({
         $('#powerbutton').hide()
         console.log('if')
       } else {
-        $('.startmenü-icon').addClass('selected')
+        startmenuicon.addClass('selected')
         // STARTMENÜ LADEN
         $('#headerbar').hide()
         $('.list-item > img').hide()
@@ -42,16 +53,17 @@ export const store = new Vuex.Store({
       state.startMenuButton = !state.startMenuButton
     },
     switchContentPageSpacing: state => {
-      if ($('#arrowcrosslist').hasClass('selected')) {
-        $('#arrowcrosslist').removeClass('selected')
+      var arrowcrosslist = $('#arrowcrosslist')
+      if (arrowcrosslist.hasClass('selected')) {
+        arrowcrosslist.removeClass('selected')
         $('#arrowcrosslist img').css('filter', 'invert(35%)')
-        $('#arrowcrosslist').css('background-color', 'black')
-        $('#arrowcrosslist').css('border-right', 'none')
+        arrowcrosslist.css('background-color', 'black')
+        arrowcrosslist.css('border-right', 'none')
       } else {
-        $('#arrowcrosslist').addClass('selected')
-        $('#arrowcrosslist').css('background-color', 'grey')
-        $('#arrowcrosslist img').css('filter', 'invert(0%)')
-        $('#arrowcrosslist').css('border-right', '3px solid black')
+        arrowcrosslist.addClass('selected')
+        arrowcrosslist.css('background-color', 'grey')
+        arrowcrosslist.css('filter', 'invert(0%)')
+        arrowcrosslist.css('border-right', '3px solid black')
       }
       console.log('switch')
       state.contentPageSpacingVerticallyNotTriggered = !state.contentPageSpacingVerticallyNotTriggered

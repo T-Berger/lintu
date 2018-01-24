@@ -15,7 +15,7 @@
         <br>
         <br>
 
-      <list-setting  class="startmenü-display"/>
+      <!--<list-setting  class="startmenü-display"/>-->
       <profil id="profil"/>
       <v-btn v-on:click="scrollTop()">Scroll up</v-btn>
       <div id="voidScroll"></div>
@@ -27,7 +27,7 @@
 <script>
     import TaskLoader from './startmenu/TaskLoader'
     import Profil from './startmenu/Profil'
-    import AllTasksService from '../services/AllTasksService'
+    // import AllTasksService from '../services/AllTasksService'
     export default {
       name: 'start-menu',
       components: {
@@ -43,12 +43,12 @@
           console.log('OK')
           // this.$store.commit('scroll', id)
         }
-      },
-      beforeCreate: async function () {
-        console.log('Get Request Alltasks')
-        this.getReq = (await AllTasksService.init()).data
-        this.$store.commit('setAufgabenanzahl', this.getReq.length)
-        console.log('Die insgesamte Aufgaben sind' + this.getReq.length + '< Übergeben | im Store >' + this.$store.state.aufgabenanzahl)// },
+      // },
+      // beforeCreate: async function () {
+      //   console.log('Get Request Alltasks')
+      //   this.getReq = (await AllTasksService.init()).data
+      //   this.$store.commit('setAufgabenanzahl', this.getReq.length)
+      //   console.log('Die insgesamte Aufgaben sind' + this.getReq.length + '< Übergeben | im Store >' + this.$store.state.aufgabenanzahl)// },
       }
     }
 </script>

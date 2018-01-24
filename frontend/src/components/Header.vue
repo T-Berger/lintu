@@ -8,12 +8,12 @@
       </v-tabs-item>
       <v-tabs-slider class="grey darken-3w"></v-tabs-slider>
 
-      <v-tabs-item v-if="this.$store.state.task[0].aufgabennummer == 1" class="v-tabs-item" id="firstTab"
+      <v-tabs-item v-if="this.$store.state.task[0].aufgabennummer == 1" class="v-tabs-item firstTab"
                    disabled >
         <v-icon large dark>mdi-arrow-left-bold</v-icon>
       </v-tabs-item>
 
-      <v-tabs-item v-else class="v-tabs-item" id="firstTab"
+      <v-tabs-item v-else class="v-tabs-item firstTab"
                    v-on:click="loadTask(back)" >
         <v-icon large dark>mdi-arrow-left-bold</v-icon>
       </v-tabs-item>
@@ -131,7 +131,7 @@
   .v-tabs-item:before {
     background: #121212;
   }
-  #firstTab{
+  .firstTab{
     margin-left: 30px;
   }
 </style>

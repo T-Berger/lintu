@@ -38,9 +38,9 @@
                   <v-btn
                     id="loadTask"
                          color="success"
-                         :loading="loading2"
+                         :loading="loading"
                          @click.native="loader = 'loading2'; loadTask(card)"
-                         :disabled="loading2"
+                         :disabled="loading"
                   >
                     Load task
                     <span slot="loader">Loading... <v-progress-circular size="18" indeterminate color="white"></v-progress-circular></span>
@@ -90,7 +90,8 @@
           fav_id: ['', false],
           performLoading: ['', false]
         },
-        loader: null
+        loader: null,
+        loading: false
       }
     },
     methods: {
