@@ -1,7 +1,7 @@
 import Api from '@/services/Api'
 export default {
   init () {
-    return Api().get('tasks/task', {
+    return Api().get('tasks/task/1', {
       // aufgabennummer: ''
     })
   },

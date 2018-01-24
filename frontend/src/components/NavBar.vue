@@ -24,18 +24,18 @@
             </v-tooltip>
           </li>
         </template>
-        <li>
+        <!--<li>-->
           <!--<v-tooltip right v-model="toogletooltip">-->
-          <!--<button class="list-button" v-on:click="toogle()" slot="activator">-->
-          <!--<v-icon dark>fa-info-circle</v-icon>-->
-          <!--</button>-->
-          <!--<span>Toogle Tooltip</span>-->
+            <!--<a class="list-button" v-on:click="toogle()" slot="activator">-->
+            <!--<v-icon dark>fa-info-circle</v-icon>-->
+            <!--</a>-->
+            <!--<span>Toogle Tooltip</span>-->
           <!--</v-tooltip>-->
-          <!--</li>-->
+        <!--</li>-->
         <li>
-          <button class="list-button" v-on:click="toogle()">
+          <a class="list-button" v-on:click="toogle()">
             <v-icon dark>fa-info-circle</v-icon>
-          </button>
+          </a>
         </li>
 
         <li>
@@ -43,11 +43,10 @@
             <img src="../assets/Arrow_Cross.svg" alt="||-||">
           </a>
         </li>
-        <li id="powerbutton"><button
-          v-on:click="logout">
-          <a class="list-item" href="">
+        <li id="powerbutton">
+          <a class="list-item" href="" v-on:click="logout">
             <i class="fas fa-power-off"></i>
-          </a></button>
+          </a>
         </li>
       </ul>
     </v-navigation-drawer>
@@ -65,7 +64,7 @@
         items: [
           {jumpId: 'taskloader', icon: 'fa-tasks', tooltip: 'Tasks Loader'},
           {jumpId: 'profil', icon: 'fa-users', tooltip: 'Profil-Page'}
-          // {jumpId: 'profil', icon: 'fa-info-circle', tooltip: 'question_answer'}
+          // {jumpId: 'ID', icon: 'BELIEBIGES ICON', tooltip: 'ANGEZEIGTER TOOLTIP'}
         ],
         form: {
           _id: []

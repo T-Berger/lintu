@@ -23,7 +23,7 @@
             <v-layout v-show="card.visible" v-model="form.parent_id[index]">
               <v-card-title primary-title class="mb-4 pb-4">
                 <div>
-                  <h3 class="headline mb-0">{{ card.name + " " +  'card_id' + index  + card.id  }}</h3>
+                  <h3 class="headline mb-0">{{ card.name + " " +  card.id  }}</h3>
                   <div>{{card.aufgabenbeschreibung}}</div>
                 </div>
               </v-card-title>
@@ -39,7 +39,7 @@
                     id="loadTask"
                          color="success"
                          :loading="loading"
-                         @click.native="loader = 'loading2'; loadTask(card)"
+                         @click.native="loader = 'loading'; loadTask(card)"
                          :disabled="loading"
                   >
                     Load task
@@ -152,8 +152,10 @@
         const l = this.loader
         this[l] = !this[l]
         console.log(this[l])
-        setTimeout(() => (this[l] = false), 3000)
-
+        this.$store.commit('setLoaderTrue')
+        // JUST FOR SHOW
+        setTimeout(() => (this[l] = false), 500)
+        while (this.$store.state.loader === false) {}
         this.loader = null
       }
     },

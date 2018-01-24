@@ -13,7 +13,7 @@
         <v-icon large dark>mdi-arrow-left-bold</v-icon>
       </v-tabs-item>
 
-      <v-tabs-item v-else class="v-tabs-item firstTab"
+      <v-tabs-item v-else class="v-tabs-item  firstTab"
                    v-on:click="loadTask(back)" >
         <v-icon large dark>mdi-arrow-left-bold</v-icon>
       </v-tabs-item>
@@ -132,6 +132,6 @@
     background: #121212;
   }
   .firstTab{
-    margin-left: 30px;
+    margin-left: 2px;
   }
 </style>

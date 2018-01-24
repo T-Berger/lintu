@@ -70,7 +70,4 @@
     position: fixed;
     overflow: hidden;
   }
-
-
-
 </style>

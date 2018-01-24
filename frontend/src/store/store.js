@@ -18,10 +18,19 @@ export const store = new Vuex.Store({
   },
   getters: {
     compiledMarkdown: state => {
-      return marked(state.task[0].aufgabe, {})
+      return marked(state.task[0].aufgabe, {
+        gfm: true,
+        highlight: false,
+        tables: false,
+        breaks: true,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false,
+        langPrefix: false })
     },
     compiledMarkdownSolution: state => {
-      return marked(state.task[0].solution, {})
+      return marked(state.task[0].solution, {breaks: true})
     }
   },
   mutations: {
@@ -38,15 +47,12 @@ export const store = new Vuex.Store({
         // STARTMENÜ entfernen
         $('.list-item > img').show()
         // hide
-        // $('#startmenü-display').hide()
         $('#powerbutton').hide()
         console.log('if')
       } else {
         startmenuicon.addClass('selected')
         // STARTMENÜ LADEN
-        $('#headerbar').hide()
         $('.list-item > img').hide()
-        // $('#startmenü-display').show()
         $('#powerbutton').show()
         console.log('Else')
       }

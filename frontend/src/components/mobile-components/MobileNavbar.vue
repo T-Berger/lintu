@@ -1,9 +1,7 @@
 <template>
   <div>
-    <button class="startmenü-icon" v-on:click="switchStartButton()">
-      <div class="caption">
+    <button class="startmenü-icon caption" v-on:click="switchStartButton()">
       <i class="fab fa-linux"></i>
-      </div>
     </button>
   </div>
 </template>
