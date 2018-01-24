@@ -1,49 +1,50 @@
 <template>
-  <div id="editor">
-    <div v-html="compiledMarkdown" id="taskContent">
+  <div class="editor">
+    <div v-html="$store.getters.compiledMarkdown" class="taskContent">
     </div>
     <v-btn v-on:click="showSolution = !showSolution" v-if="showSolution" color="primary">Lösung verstecken</v-btn>
     <v-btn v-else v-on:click="showSolution = !showSolution" color="primary">Lösung anzeigen</v-btn>
-    <div v-if="showSolution == true" v-html="compiledMarkdownSolution">
+    <div v-if="showSolution == true" v-html="$store.getters.compiledMarkdownSolution">
     </div>
   </div>
 </template>
 
 <script>
-    import marked from 'marked'
-    import _ from 'lodash'
+    // import marked from 'marked'
+    // import _ from 'lodash'
     export default {
       name: 'task',
       data () {
         return {
-          input: '_This is an assignment to the class [Programmieren 3](https://hsro-inf-prg3.github.io) at the [University of Applied Sciences Rosenheim](http://www.fh-rosenheim.de)._\n' +
-          '\n' +
-          '# Assignment 1: A (Java) software engineers toolbox\n' +
-          '\n' +
-          '\t- Back on your computer, checkout `master`, and pull the changes to update your local copy.\n',
-          solution: 'BQB',
+          // input: '# Herzlich Willkommen zu Lintu: \n ## Im folgenden werden sie lernen einige Bash-Funktionen richtig anwenden zu können: ',
+          // solution: 'BQB',
           showSolution: false
         }
-      },
-      computed: {
-        compiledMarkdown: function () {
-          return marked(this.input, { sanitize: true })
-        },
-        compiledMarkdownSolution: function () {
-          return marked(this.solution, { sanitize: true })
-        }
-      },
-      methods: {
-        update: _.debounce(function (e) {
-          this.input = e.target.value
-        }, 300)
+      // },
+      // computed: {
+      //   compiledMarkdown: function () {
+      //     return marked(this.input, {
+      //       breaks: true
+      //     })
+      //   },
+      //   compiledMarkdownSolution: function () {
+      //     return marked(this.solution, { breaks: true })
+      //   }
+      // },
+      // methods: {
+      //   update: _.debounce(function (e) {
+      //     this.input = e.target.value
+      //   }, 300)
+      // },
+      // beforeMount: function () {
+      //   this.input = this.$store.state.aufgabe
+      //   this.solution = this.$store.state.task[0].solution
       }
-
     }
 </script>
 
 <style scoped>
-  html, body, #editor {
+  html, body, .editor {
     background-color: whitesmoke;
     /*margin: 0;*/
     /*height: 40vh;*/

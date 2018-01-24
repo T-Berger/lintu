@@ -1,5 +1,5 @@
 <template>
-  <v-card class="startmenü-display">
+  <v-card class="startmenü-display" id="taskloader">
     <v-container fluid>
       <v-layout row wrap class="startmenü-display mb-4 pb-2 hidden-md-and-down">
         <v-flex
@@ -23,7 +23,7 @@
             <v-layout v-show="card.visible" v-model="form.parent_id[index]">
               <v-card-title primary-title class="mb-4 pb-4">
                 <div>
-                  <h3 class="headline mb-0">{{ card.name + " " +  'card_id' + index  + card.id  }}</h3>
+                  <h3 class="headline mb-0">{{ card.name + " " +  card.id  }}</h3>
                   <div>{{card.aufgabenbeschreibung}}</div>
                 </div>
               </v-card-title>
@@ -38,9 +38,9 @@
                   <v-btn
                     id="loadTask"
                          color="success"
-                         :loading="loading2"
-                         @click.native="loader = 'loading2'; loadTask(card)"
-                         :disabled="loading2"
+                         :loading="loading"
+                         @click.native="loader = 'loading'; loadTask(card)"
+                         :disabled="loading"
                   >
                     Load task
                     <span slot="loader">Loading... <v-progress-circular size="18" indeterminate color="white"></v-progress-circular></span>
@@ -85,28 +85,13 @@
     ],
     data () {
       return {
-        cardstest: [
-          {name: 'MacBook Air', id: 1, visible: false, difficulty: 10},
-          {name: 'MacBook Pro', id: 2, visible: false, difficulty: 40},
-          {name: 'Lenovo W530', id: 3, visible: false, difficulty: 80},
-          {name: 'Acer Aspire One', id: 4, visible: false, difficulty: 100}
-        ],
-        cards: [
-          {name: 'MacBook Air', id: 1, visible: false, difficulty: 10},
-          {name: 'MacBook Pro', id: 2, visible: false, difficulty: 40},
-          {name: 'Lenovo W530', id: 3, visible: false, difficulty: 80},
-          {name: 'Acer Aspire One', id: 4, visible: false, difficulty: 100}
-        ],
         form: {
           parent_id: [],
           fav_id: ['', false],
           performLoading: ['', false]
         },
-        showlabel: false,
-        show0: false,
-        show1: false,
         loader: null,
-        loading2: false
+        loading: false
       }
     },
     methods: {
@@ -167,12 +152,10 @@
         const l = this.loader
         this[l] = !this[l]
         console.log(this[l])
-        // console.log('Hallo')
-        // console.log(this.card[this.index])
-        // console.log('Hallo')
-        // console.log(this.cards)
-        setTimeout(() => (this[l] = false), 3000)
-
+        this.$store.commit('setLoaderTrue')
+        // JUST FOR SHOW
+        setTimeout(() => (this[l] = false), 500)
+        while (this.$store.state.loader === false) {}
         this.loader = null
       }
     },
@@ -182,19 +165,6 @@
       // console.log(this.props.getReq)
       this.cards = this.getReq
     }
-    // },
-    // computed: {
-    //   colorIcon: function (difficulty) {
-    //     console.log(difficulty)
-    //     if (difficulty <= 33) {
-    //       return 'green'
-    //     } else if (difficulty <= 66) {
-    //       return 'orange'
-    //     } else {
-    //       return 'red'
-    //     }
-    //   }
-    // }
   }
 </script>
 

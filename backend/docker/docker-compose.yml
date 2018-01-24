@@ -1,0 +1,13 @@
+version: "3"
+services:
+  app:
+    container_name: lintu   # arbitrary name
+    restart: always               # restart container on service startup?
+    build: .                      # build container from .
+    ports:
+      - "3000:3000"               # expose default node port
+    links:
+      - mongo                     # provide network access to `mongo`
+  mongo:
+    container_name: mongo
+    image: mongo                  # use existing image `mongo`
