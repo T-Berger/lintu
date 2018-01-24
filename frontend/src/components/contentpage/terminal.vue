@@ -1,14 +1,14 @@
 <template>
   <!--Terminal-->
-  <div id= "terminal">
+  <div class= "terminal">
     <!--<div v-for='(history, index) in historyinput'>-->
       <!--<span>{{ historyinput[index]}}</span>-->
     <!--</div>-->
     <div v-for='(outputline, index) in output'>
       <span>{{ output[index]}}</span>
     </div>
-    <label for = terminalInput></label>
-    <input id = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()"
+    <!--<label for = terminalInput></label>-->
+    <input class = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()"
            v-on:keyup.up="moveHistoryUp()" v-on:keyup.down="moveHistoryDown()"
            v-on:keydown.delete.prevent="notDeletableLabel()">
   </div>
@@ -96,7 +96,7 @@
 
 <style scoped>
   @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
-  #terminal {
+  .terminal {
     background-color: black;
     word-spacing: 3px;
     font-weight: lighter;
@@ -113,7 +113,7 @@
     /*width: 100%;*/
   }
 
-  #terminalInput {
+  .terminalInput {
     background-color: black;
     border-color: black;
     height: auto;

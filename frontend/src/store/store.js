@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import TasksService from '@/services/TasksService'
+import marked from 'marked'
 
 Vue.use(Vuex)
 
@@ -10,22 +11,19 @@ export const store = new Vuex.Store({
     startMenuButton: false,
     startMenuMounted: false,
     contentPageSpacingVerticallyNotTriggered: true,
-    task: [{aufgabennummer: '1.0', aufgabentitel: 'BeispielHallo', aufgabe: 'BALALALALALALALALALALALALA'}],
+    task: [{aufgabennummer: '1.0', aufgabentitel: 'BeispielAufgabe', aufgabe: 'Aufgabe', solution: 'loesung'}],
     aufgabenanzahl: 4,
-    currentTaskID: 1
-  // },
-  // getters: {
-  //     // getTask: async function (id) {
-  //     //   console.log(this.state.task)
-  //     //   this.state.task = (await TasksService.index(id)).data
-  //   }
-
+    currentTaskID: 1,
+    aufgabe: '# HIER WÜRDE DIE AUFGABE STEHEN \n ## kkkk \n lllll \n sss'
   },
-  // getters: {
-  //   getTaskLength () {
-  //     return this.$store.state.todos.filter(todo => todo.done).length
-  //   }
-  // },
+  getters: {
+    compiledMarkdown: state => {
+      return marked(state.task[0].aufgabe, {})
+    },
+    compiledMarkdownSolution: state => {
+      return marked(state.task[0].solution, {})
+    }
+  },
   mutations: {
     setAufgabenanzahl: (state, anzahl) => {
       state.aufgabenanzahl = anzahl
@@ -34,39 +32,51 @@ export const store = new Vuex.Store({
       state.aufgabenanzahl = id
     },
     switchStartMenuButton: state => {
+      var startmenuicon = $('.startmenü-icon')
+      if (startmenuicon.hasClass('selected')) {
+        startmenuicon.removeClass('selected')
+        // STARTMENÜ entfernen
+        $('.list-item > img').show()
+        // hide
+        // $('#startmenü-display').hide()
+        $('#powerbutton').hide()
+        console.log('if')
+      } else {
+        startmenuicon.addClass('selected')
+        // STARTMENÜ LADEN
+        $('#headerbar').hide()
+        $('.list-item > img').hide()
+        // $('#startmenü-display').show()
+        $('#powerbutton').show()
+        console.log('Else')
+      }
       state.startMenuButton = !state.startMenuButton
     },
     switchContentPageSpacing: state => {
-      if ($('#arrowcrosslist').hasClass('selected')) {
-        $('#arrowcrosslist').removeClass('selected')
+      var arrowcrosslist = $('#arrowcrosslist')
+      if (arrowcrosslist.hasClass('selected')) {
+        arrowcrosslist.removeClass('selected')
         $('#arrowcrosslist img').css('filter', 'invert(35%)')
-        $('#arrowcrosslist').css('background-color', 'black')
-        $('#arrowcrosslist').css('border-right', 'none')
+        arrowcrosslist.css('background-color', 'black')
+        arrowcrosslist.css('border-right', 'none')
       } else {
-        $('#arrowcrosslist').addClass('selected')
-        $('#arrowcrosslist').css('background-color', 'grey')
-        $('#arrowcrosslist img').css('filter', 'invert(0%)')
-        $('#arrowcrosslist').css('border-right', '3px solid black')
+        arrowcrosslist.addClass('selected')
+        arrowcrosslist.css('background-color', 'grey')
+        arrowcrosslist.css('filter', 'invert(0%)')
+        arrowcrosslist.css('border-right', '3px solid black')
       }
       console.log('switch')
       state.contentPageSpacingVerticallyNotTriggered = !state.contentPageSpacingVerticallyNotTriggered
     },
     switchStartMenuButtonOnTrue: state => {
       state.startMenuButton = true
-      $('#startmenü-icon').addClass('selected')
+      $('.startmenü-icon').addClass('selected')
       console.log('HALLO SELECTED?')
       // STARTMENÜ LADEN
-      $('#headerbar').hide()
       $('.list-item > img').hide()
       // show
       $('#powerbutton').show()
     },
-    // startMenuMountedOnTrue: state => {
-    //   state.startMenuMounted = true
-    // },
-    // startMenuMountedOnFalse: state => {
-    //   state.startMenuMounted = false
-    // },
     scroll: (state, payload) => {
       console.log(payload)
       var top = document.getElementById(payload).offsetTop
@@ -78,10 +88,6 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
-    // scroll: (context, payload) => {
-    //   console.log(payload)
-    //   context.commit('scroll', payload)
-    // }
     storeNewTaskFromServer: async(state, id) => {
       console.log('Dies ist die Id von Server Request' + id)
       state.commit('setcurrentTaskID', id)

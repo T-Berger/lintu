@@ -3,12 +3,12 @@
   <div>
     <v-navigation-drawer permanent dark id="navbar" class="hidden-md-and-down">
       <!--Icon Startmenü-->
-      <button id="startmenü-icon" v-on:click="switchStartButton()">
+      <button class="startmenü-icon" v-on:click="switchStartButton()">
         <i class="fab fa-linux"></i>
       </button>
       <!--Navbar-icons-->
       <ul id="ul-navbar">
-        <div v-for="(item,index) in items" :key="item.icon">
+        <template v-for="(item,index) in items">
           <li>
             <v-tooltip right v-if="toogletooltip == true" v-model="toogletooltip">
               <a class="list-item" v-on:click="scrollMenu(item.jumpId)"  slot="activator">
@@ -23,7 +23,7 @@
               <span>{{item.tooltip}}</span>
             </v-tooltip>
           </li>
-        </div>
+        </template>
         <li>
           <!--<v-tooltip right v-model="toogletooltip">-->
           <!--<button class="list-button" v-on:click="toogle()" slot="activator">-->
@@ -32,7 +32,6 @@
           <!--<span>Toogle Tooltip</span>-->
           <!--</v-tooltip>-->
           <!--</li>-->
-
         <li>
           <button class="list-button" v-on:click="toogle()">
             <v-icon dark>fa-info-circle</v-icon>
@@ -58,19 +57,15 @@
 </template>
 <script>
   import firebase from 'firebase'
-  // import MobileNavbar from './mobile-components/MobileNavbar.vue'
   export default {
     name: 'nav-bar',
-    // components: {
-    //   MobileNavbar
-    // },
     data () {
       return {
         props: ['addStatusClass'],
         items: [
-          {jumpId: 'profil', icon: 'fa-chevron-circle-right', tooltip: 'dashboard'},
-          {jumpId: 'profil', icon: 'fa-cogs', tooltip: 'question_answer'},
-          {jumpId: 'profil', icon: 'fa-info-circle', tooltip: 'question_answer'}
+          {jumpId: 'taskloader', icon: 'fa-tasks', tooltip: 'Tasks Loader'},
+          {jumpId: 'profil', icon: 'fa-users', tooltip: 'Profil-Page'}
+          // {jumpId: 'profil', icon: 'fa-info-circle', tooltip: 'question_answer'}
         ],
         form: {
           _id: []
@@ -97,6 +92,7 @@
         })
       },
       scrollMenu: function (id) {
+        console.log(id)
         this.$store.commit('switchStartMenuButtonOnTrue')
         console.log('OK')
         this.$nextTick(function () {

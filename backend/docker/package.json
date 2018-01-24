@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www --exec  \"npm run lint && node\"",
+    "start": "node app.js",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint src/**/*.js  --fix"
   },
@@ -20,7 +20,8 @@
     "pug": "2.0.0-beta11",
     "serve-favicon": "~2.4.5",
     "socket.io": "^2.0.4",
-    "text-encoding": "^0.6.4"
+    "text-encoding": "^0.6.4",
+    "www": "0.0.0"
   },
   "devDependencies": {
     "eslint-config-standard": "^10.2.1",

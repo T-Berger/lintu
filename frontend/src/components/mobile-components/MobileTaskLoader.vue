@@ -23,27 +23,8 @@
 
 <script>
     export default {
-      // props: {
-      //   cardDesc: {
-      //     type: String,
-      //     default: 'default description text'
-      //   },
-      //   cardDiff: {
-      //     type: String,
-      //     default: '5'
-      //   }
-      // },
       props: ['getReq'],
-      //   {
-      //     // getReq: 'getReq',
-      //   // cards: 'cards'
-      // },
       name: 'mobile-task-loader',
-      // data () {
-      //   return {
-      //     cardslocal: []
-      //   }
-      // },
       methods: {
         colorIcon: function (difficulty) {
           // console.log(difficulty)
@@ -70,9 +51,6 @@
       mounted: function () {
         console.log('Mobile-Darstellung-Switch')
         console.log(this.getReq)
-        // console.log(this.props.cards)
-        // this.cardslocal = this.cards
-        // console.log(this.cardslocal)
       }
     }
 </script>

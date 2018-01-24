@@ -4,3 +4,4 @@ backend/data/WiredTiger.lock
 backend/data/mongod.lock
 backend/.idea/
 frontend/.idea/
+backend/docker/node_modules
