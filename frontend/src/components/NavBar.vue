@@ -3,7 +3,7 @@
   <div>
     <v-navigation-drawer permanent dark id="navbar" class="hidden-md-and-down">
       <!--Icon Startmenü-->
-      <button id="startmenü-icon" v-on:click="switchStartButton()">
+      <button class="startmenü-icon" v-on:click="switchStartButton()">
         <i class="fab fa-linux"></i>
       </button>
       <!--Navbar-icons-->

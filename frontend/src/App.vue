@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <!--<div id="app">-->
     <v-app>
       <!--<main v-if="this.$store.state.userLogedIn == true">-->
       <!--<nav-bar class="hidden-md-and-down"/>-->
@@ -9,21 +9,21 @@
       <!--</main>-->
       <router-view></router-view>
     </v-app>
-  </div>
+  <!--</div>-->
 </template>
 
 <script>
-  import PageHeader from '@/components/Header.vue'
-  import NavBar from './components/NavBar'
+  // import PageHeader from '@/components/Header.vue'
+  // import NavBar from './components/NavBar'
   // import TasksService from '@/services/TasksService'
-  import StartMenu from '@/components/StartMenu'
+  // import StartMenu from '@/components/StartMenu'
   import AllTasksService from './services/AllTasksService'
   export default {
     name: 'app',
     components: {
-      NavBar,
-      PageHeader,
-      StartMenu
+      // NavBar,
+      // PageHeader,
+      // StartMenu
     },
     data () {
       return {

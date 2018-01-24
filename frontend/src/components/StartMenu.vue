@@ -28,14 +28,12 @@
 </template>
 
 <script>
-    import ListSetting from './startmenu/ListSetting'
     import TaskLoader from './startmenu/TaskLoader'
     import Profil from './startmenu/Profil'
     import AllTasksService from '../services/AllTasksService'
     export default {
       name: 'start-menu',
       components: {
-        ListSetting,
         Profil,
         TaskLoader
       },

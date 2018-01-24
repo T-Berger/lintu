@@ -1,6 +1,6 @@
 <template>
-  <div id="editor">
-    <div v-html="compiledMarkdown" id="taskContent">
+  <div class="editor">
+    <div v-html="compiledMarkdown" class="taskContent">
     </div>
     <v-btn v-on:click="showSolution = !showSolution" v-if="showSolution" color="primary">Lösung verstecken</v-btn>
     <v-btn v-else v-on:click="showSolution = !showSolution" color="primary">Lösung anzeigen</v-btn>
@@ -43,7 +43,7 @@
 </script>
 
 <style scoped>
-  html, body, #editor {
+  html, body, .editor {
     background-color: whitesmoke;
     /*margin: 0;*/
     /*height: 40vh;*/
