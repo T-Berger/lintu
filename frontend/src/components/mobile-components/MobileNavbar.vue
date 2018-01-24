@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button id="startmenü-icon" v-on:click="switchStartButton()">
+    <button class="startmenü-icon" v-on:click="switchStartButton()">
       <div class="caption">
       <i class="fab fa-linux"></i>
       </div>

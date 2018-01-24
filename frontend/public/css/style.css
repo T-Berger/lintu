@@ -29,7 +29,7 @@ header{
 }
 /*Navbar*/
     /*Startmenü-ICON*/
-    #startmenü-icon {
+    .startmenü-icon {
         text-align: center;
         vertical-align: middle;
         height: var(--laengeHeader-);
@@ -37,8 +37,8 @@ header{
         border-left: none;
         font-size: 3em;
     }
-    #startmenü-icon:focus {outline:0;}
-    #startmenü-icon:active{
+    .startmenü-icon:focus {outline:0;}
+    .startmenü-icon:active{
       color:white;
       background-color: #303030;
       outline: none;

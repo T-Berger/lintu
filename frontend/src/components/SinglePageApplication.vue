@@ -1,8 +1,9 @@
 <template>
   <div>
     <nav-bar class="hidden-md-and-down"/>
-    <page-header :task="task" :getReq="getReq"/>
-    <start-menu  v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>
+    <page-header :getReq="getReq"/>
+    <start-menu :getReq="getReq"
+      v-show="this.$store.state.startMenuButton == true" id="startmenü" class="startmenü-display"/>
     <content-page />
   </div>
 </template>
@@ -24,8 +25,6 @@
       },
       data () {
         return {
-          task: 'Hallo',
-          response: {'HALOO': 'asadsad', 'aa': 'ASa'},
           getReq: []
         }
       },
@@ -44,22 +43,10 @@
         console.log('Get Request Alltasks')
         this.getReq = (await AllTasksService.init()).data
         this.$store.commit('setAufgabenanzahl', this.getReq.length)
-        console.log('Die insgesamte Aufgaben sind' + this.getReq.length + '< Übergeben | im Store >' + this.$store.state.aufgabenanzahl)// },
-        // created: function () {
-        //   console.log('this.getReq')
-        //   console.log(this.getReq)
-        // },
-        // beforeDestroy: function () {
-        //   console.log('startMenuDestroy')
-        //   this.$store.commit('startMenuMountedOnFalse')
+        console.log('Die insgesamte Aufgaben sind' + this.getReq.length + '< Übergeben | im Store >' + this.$store.state.aufgabenanzahl)
       },
       created: function () {
-        // this.$store.commit('switchStartMenuButton')
-        console.log('ICH BIN JETZT GEMOUNTED')
-        // $('.list-item > img').show()
-        // // hide
-        // // $('#startmenü-display').hide()
-        // $('#powerbutton').hide()
+        console.log('SPA geladen')
       }
     }
 </script>
