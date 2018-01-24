@@ -1,31 +1,25 @@
 <template>
-  <div class="login">
+  <v-flex xs6 offset-xs3 class="login">
     <h3>Sign In</h3>
-    <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br>
-
-    <div class="text-xs-center">
-      <v-bottom-sheet v-model="sheet">
-        <v-btn slot="activator" color="green" dark v-on:click="signIn">Connect</v-btn>
-        <v-list>
-          <v-subheader>Open in</v-subheader>
-          <v-list-tile
-            v-for="tile in tiles"
-            :key="tile.title"
-            @click="sheet = false"
-          >
-            <v-list-tile-avatar>
-              <v-avatar size="32px" tile>
-                <img :src="`/static/doc-images/bottom-sheets/${tile.img}`" :alt="tile.title">
-              </v-avatar>
-            </v-list-tile-avatar>
-            <v-list-tile-title>{{ tile.title }}</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-bottom-sheet>
-    </div>
+    <v-form
+      name="lintu-login"
+      autocomplete="off">
+      <v-text-field
+        label="Email"
+        v-model="email"
+        :rules="emailRules"
+      ></v-text-field>
+      <br>
+      <v-text-field
+        label="Password"
+        type="password"
+        v-model="password"
+        autocomplete="new-password"
+      ></v-text-field>
+    </v-form>
+    <v-btn color="green" dark v-on:click="signIn">Connect</v-btn>
     <p>You don't have an account ? You can <router-link to="/sign-up">create one</router-link></p>
-  </div>
+  </v-flex>
 </template>
 
 <script>
@@ -36,7 +30,12 @@
     data: function () {
       return {
         email: '',
-        password: ''
+        password: '',
+        /* eslint-disable */
+        emailRules: [
+          (v) => !!v || 'E-mail is required',
+          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+        ]
       }
     },
     methods: {

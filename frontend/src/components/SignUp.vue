@@ -1,29 +1,26 @@
 <template>
-  <div class="sign-up">
+  <v-flex xs6 offset-xs3  class="signUp">
     <h3>Let's create a new account !</h3><br>
-    <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br>
-    <div class="text-xs-center">
-      <v-bottom-sheet v-model="sheet">
-        <v-btn slot="activator" color="green" dark v-on:click="signUp">Sign Up</v-btn>
-        <v-list>
-          <v-list-tile
-            v-for="tile in tiles"
-            :key="tile.title"
-            @click="sheet = false"
-          >
-            <v-list-tile-avatar>
-              <v-avatar size="32px" tile>
-                <img :src="`/static/doc-images/bottom-sheets/${tile.img}`" :alt="tile.title">
-              </v-avatar>
-            </v-list-tile-avatar>
-            <v-list-tile-title>{{ tile.title }}</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-bottom-sheet>
-    </div>
+    <v-form
+      name="lintu-login"
+      autocomplete="off">
+      <v-text-field
+        label="Email"
+        v-model="email"
+        :rules="emailRules"
+      ></v-text-field>
+      <br>
+      <v-text-field
+        label="Password"
+        type="password"
+        v-model="password"
+        autocomplete="new-password"
+        :rules="passwordRule"
+      ></v-text-field>
+    </v-form>
+    <v-btn color="green" dark v-on:click="signUp">Sign Up</v-btn>
     <span>or go back to <router-link to="/login">login</router-link>.</span>
-  </div>
+  </v-flex>
 </template>
 
 <script>
@@ -34,7 +31,15 @@
     data: function () {
       return {
         email: '',
-        password: ''
+        password: '',
+        /* eslint-disable */
+        emailRules: [
+          (v) => !!v || 'E-mail is required',
+          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+        ],
+        passwortRule: [
+          (v) => v.length >= 6 || 'Password must be at least 6 characters'
+        ]
       }
     },
     methods: {

@@ -87,14 +87,6 @@ io.on('connection', function(socket) {
     var decoder = new TextDecoder("ascii");
     child.stdout.on('data', (data) => {
         console.log(`child stdout:\n${data}`);
-        // io.to(socket).emit('stdout', data); //GEHT NICHT EMIT NICHT
-        // console.log(data)
-        // spaeter nur noch auslagern
-
-        // ascii Buffer array to Sting
-
-        // var enc = new TextEncoder("iso-8859-2");
-        // console.log(enc.decode(data));
         asc.encoding;
         console.log('Ascii');
         // var asc = new TextEncoder("ascii");
@@ -116,13 +108,6 @@ io.on('connection', function(socket) {
         console.log(data);
         child.stdin.write(data)
     })
-
-
-    // var redisClient = redis.createClient();
-    // redisClient.subscribe('message');
-    // redisClient.on('message', function (channel, message) {
-    //     logMultipleData('New Message In Queune', channel, message);
-    // })
 });
 
 module.exports = app;
