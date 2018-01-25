@@ -15,6 +15,7 @@
 </template>
 
 <script>
+   import firebase from 'firebase'
    export default {
      name: 'terminal',
      data () {
@@ -61,15 +62,20 @@
          // console.log(this.inputLabel)
          // console.log(this.inputLabel.concat(inputDeletable))
          this.input = this.inputLabel.concat(inputDeletable)
+         console.log(inputDeletable)
          console.log(this.input)
+         if (this.input.length === this.inputLabel.length) {
+           console.log(stop)
+           return
+         }
          this.input = this.input.slice(0, (this.input.length - 1))
          console.log(this.input)
        },
        moveHistoryDown () {
          this.counter++
-         if (this.counter > this.historyinput.length | this.counter === this.historyinput.length) {
+         if (this.counter > this.historyinput.length || this.counter === this.historyinput.length) {
            this.counter--
-           this.input = 'USERNAME '
+           this.input = 'USERNAME  '
            console.log(this.counter)
          } else {
            this.input = this.historyinput[this.counter]
@@ -89,6 +95,14 @@
            this.input = this.historyinput[this.counter]
            console.log(this.counter)
          }
+       }
+     },
+     created () {
+       this.user = firebase.auth().currentUser
+       if (this.user) {
+         this.input = this.user.email + ' $ '
+         this.inputLabel = this.user.email + ' $ '
+         this.userId = this.user.uid
        }
      }
    }
