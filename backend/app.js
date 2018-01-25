@@ -19,7 +19,7 @@ var http  = require('http');
 
 var mongo = require("mongodb");
 var monk = require("monk");
-var db = monk('localhost:27017/lintudb');
+var db = monk('27017:27017/lintudb');
 
 var index = require('./routes/index');
 var task = require('./routes/task');

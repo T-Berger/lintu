@@ -1,6 +1,11 @@
-# lintu
-Web-Technologie Projekt von Patrick Karlbauer, Patrick Zielinski, Thomas Berger 
+# Docker build commandos
 
-	##Ziel:##
-		Das Ziel ist es ein interaktives Linux-Tutorial als Webanwendung zu programmieren
-		Ungefähr wie das Git-Tutorial in der ersten 3 Prg Übung https://try.github.io/levels/1/challenges/1
+## docker run -p 27017:27017 --name mongodb mongo
+
+## node ./mongodbtaskfile.js
+
+## cd backend/
+
+## docker build -t lintu .
+ 
+## docker run -ti --link mongodb:mongodb -p 3000:3000 -p 3001:3001 --name lintu2 lintu
