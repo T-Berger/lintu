@@ -11,6 +11,8 @@
     <input class = "terminalInput" v-model="input" type="text" v-on:keyup.enter="saveString()"
            v-on:keyup.up="moveHistoryUp()" v-on:keyup.down="moveHistoryDown()"
            v-on:keydown.delete.prevent="notDeletableLabel()">
+    <br>
+    <br>
   </div>
 </template>
 
@@ -55,6 +57,8 @@
          console.log(this.inputLabel)
          this.counter = this.historyinput.length
          // this.$socket.emit('stdin', this.input)
+         var d = $('.terminal')
+         d.scrollTop(d.prop('scrollHeight'))
        },
        notDeletableLabel () {
          var inputDeletable = this.input.substr(this.input.length - (this.input.length - this.inputLabel.length))
