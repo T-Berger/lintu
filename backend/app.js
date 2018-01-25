@@ -13,6 +13,7 @@ var fs    = require('fs');
 var url   = require('url');
 var http  = require('http');
 // var encoder = require('text-encoding');
+//var initDB = require('mongodbtasks/mongodbtasksfile');
 
 
 
@@ -50,8 +51,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 // Make our db accessible to our router
 app.use(function(req,res,next){
-  req.db = db;
-  next();
+    req.db = db;
+    next();
 });
 
 app.use('/', index);

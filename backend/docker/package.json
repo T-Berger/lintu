@@ -3,9 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
-    "lint": "eslint src/**/*.js",
-    "lint:fix": "eslint src/**/*.js  --fix"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -22,14 +20,5 @@
     "socket.io": "^2.0.4",
     "text-encoding": "^0.6.4",
     "www": "0.0.0"
-  },
-  "devDependencies": {
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "eslint": "^4.6.0",
-    "nodemon": "^1.11.0"
   }
 }

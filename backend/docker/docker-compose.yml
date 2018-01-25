@@ -5,7 +5,7 @@ services:
     restart: always               # restart container on service startup?
     build: .                      # build container from .
     ports:
-      - "3000:3000"               # expose default node port
+      - "3001:3001"               # expose default node port
     links:
       - mongo                     # provide network access to `mongo`
   mongo:
